@@ -14,7 +14,13 @@ const log_id = process.env.LOG_ID;
 
 // bot instance
 const bot = new Client({
-    intents: [GatewayIntentBits.Guilds]
+    intents: [
+        GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.MessageContent,
+        GatewayIntentBits.GuildMembers,
+        GatewayIntentBits.GuildMessageReactions,
+    ],
 });
 
 /**
@@ -23,7 +29,7 @@ const bot = new Client({
 
 bot.commands = new Collection();
 
-const foldersPath = path.join(__dirname, 'commands');
+const foldersPath = path.join(import.meta.dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
@@ -31,15 +37,34 @@ for (const folder of commandFolders) {
     const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
     for (const file of commandFiles) {
-        const filePath = path.join(commandsPath, file);
-        const command = require(filePath);
+        const filePath = path.join(`./commands/${folder}`, file);
 
+        await import(filePath).then((command) => {
+            if ('data' in command && 'execute' in command) {
+                console.log('data and execute were found');
+            } else if ('data' in command) {
+                console.log('data was found');
+            } else if ('execute' in command) {
+                console.log('execute was found');
+            } else {
+                console.log('data and execute were not found');
+            }
+        })
+
+        /*
         // set command bot.commands
         if ('data' in command && 'execute' in command) {
             bot.commands.set(command.data.name, command);
+        } else if ('data' in command) {
+            
+            console.log('Data is present.');
+        } else if ('execute' in command) {
+            
+            console.log('Execute is present.');
         } else {
-            console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`)
+            console.log(`[WARNING] The command at ${file} is missing a required "data" or "execute" property.`)
         };
+        */
     };
 };
 

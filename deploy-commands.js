@@ -23,7 +23,7 @@ import path from 'node:path';
 const commands = [];
 
 // grab command folders
-const foldersPath = path.join(__dirname, 'commands');
+const foldersPath = path.join(import.meta.dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
@@ -33,14 +33,36 @@ for (const folder of commandFolders) {
 
     // grab JSON output of command metadata
     for (const file of commandFiles) {
-        const filePath = path.join(commandsPath, file);
-        const command = require(filePath);
+        const filePath = path.join(`./commands/${folder}`, file);
+
+        await import(filePath).then((command) => {
+            if ('data' in command && 'execute' in command) {
+                console.log('data and execute were found');
+            } else if ('data' in command) {
+                console.log('data was found');
+            } else if ('execute' in command) {
+                console.log('execute was found');
+            } else {
+                console.log('data and execute were not found');
+            }
+        })
+
+        /*
+        const command = fetch(filePath);
 
         if ('data' in command && 'execute' in command) {
             commands.push(command.data.toJSON());
+            console.log('Data and Execute are present.');
+        } else if ('data' in command) {
+            
+            console.log('Data is present.');
+        } else if ('execute' in command) {
+            
+            console.log('Execute is present.');
         } else {
-            console.log(`[WARNING] The command at ${filePath} is missing a required "data" or "execute" property.`)
+            console.log(`[WARNING] The command at ${file} is missing a required "data" or "execute" property.`)
         };
+        */
     };
 };
 

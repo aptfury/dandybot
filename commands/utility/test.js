@@ -2,7 +2,7 @@
 import { SlashCommandBuilder } from "discord.js";
 
 // test command
-const TestCommand = {
+export default {
     data: new SlashCommandBuilder()
         .setName('test')
         .setDescription('Verifies operational status.'),
@@ -10,6 +10,3 @@ const TestCommand = {
         await interaction.reply('I am operational.');
     },
 };
-
-// exports
-export { TestCommand };
