@@ -19,7 +19,7 @@
   },
   "license": "MIT",
   "author": "aptfury/beeWitched",
-  "type": "module",
+  "type": "commonjs",
   "main": "app.js",
   "scripts": {
     "test": "test.js"

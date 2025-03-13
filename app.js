@@ -1,12 +1,12 @@
 // .env init
-import 'dotenv/config';
+require('dotenv').config();
 
 // node packages
-import fs from 'node:fs';
-import path from 'node:path';
+const fs = require('node:fs');
+const path = require('node:path');
 
 // discord.js classes
-import { Client, Collection, Events, GatewayIntentBits, Message, MessageFlags } from 'discord.js';
+const { Client, Collection, Events, GatewayIntentBits, Message, MessageFlags } = require('discord.js');
 
 // env variables
 const token = process.env.DISCORD_TOKEN;
@@ -37,21 +37,9 @@ for (const folder of commandFolders) {
     const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
     for (const file of commandFiles) {
-        const filePath = path.join(`./commands/${folder}`, file);
+        const filePath = path.join(commandsPath, file);
+        const command = require(filePath);
 
-        await import(filePath).then((command) => {
-            if ('data' in command && 'execute' in command) {
-                console.log('data and execute were found');
-            } else if ('data' in command) {
-                console.log('data was found');
-            } else if ('execute' in command) {
-                console.log('execute was found');
-            } else {
-                console.log('data and execute were not found');
-            }
-        })
-
-        /*
         // set command bot.commands
         if ('data' in command && 'execute' in command) {
             bot.commands.set(command.data.name, command);
@@ -64,7 +52,6 @@ for (const folder of commandFolders) {
         } else {
             console.log(`[WARNING] The command at ${file} is missing a required "data" or "execute" property.`)
         };
-        */
     };
 };
 

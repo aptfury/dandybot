@@ -1,12 +1,12 @@
 // imports
-import { SlashCommandBuilder } from "discord.js";
+const { SlashCommandBuilder } = require('discord.js');
 
 // test command
-export default {
+module.exports = {
     data: new SlashCommandBuilder()
         .setName('test')
-        .setDescription('Verifies operational status.'),
+        .setDescription('Checks if app is responsive.'),
     async execute(interaction) {
-        await interaction.reply('I am operational.');
+        await interaction.reply('I am alive!');
     },
 };

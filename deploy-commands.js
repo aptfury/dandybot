@@ -2,23 +2,23 @@
  * IMPORTS START
  */
 
-// .env init and vars
-import 'dotenv/config';
-const bot_id = process.env.BOT_ID;
-const token = process.env.DISCORD_TOKEN;
-const dev_server_id = process.env.DEV_SERVER;
-const main_server_id = process.env.MAIN_SERVER;
+// .env init
+require('dotenv').config();
 
 // discord packages
-import { REST, Routes } from 'discord.js';
+const { REST, Routes } = require('discord.js');
 
 // node packages
-import fs from 'node:fs';
-import path from 'node:path';
+const fs = require('node:fs');
+const path = require('node:path');
 
 /**
  * IMPORTS END
  */
+
+// environment variables
+const bot_id = process.env.BOT_ID;
+const token = process.env.DISCORD_TOKEN;
 
 const commands = [];
 
@@ -34,25 +34,11 @@ for (const folder of commandFolders) {
     // grab JSON output of command metadata
     for (const file of commandFiles) {
         const filePath = path.join(`./commands/${folder}`, file);
+        const command = require(filePath);
 
-        await import(filePath).then((command) => {
-            if ('data' in command && 'execute' in command) {
-                console.log('data and execute were found');
-            } else if ('data' in command) {
-                console.log('data was found');
-            } else if ('execute' in command) {
-                console.log('execute was found');
-            } else {
-                console.log('data and execute were not found');
-            }
-        })
-
-        /*
-        const command = fetch(filePath);
-
+        // set command bot.commands
         if ('data' in command && 'execute' in command) {
-            commands.push(command.data.toJSON());
-            console.log('Data and Execute are present.');
+            bot.commands.set(command.data.name, command);
         } else if ('data' in command) {
             
             console.log('Data is present.');
@@ -62,7 +48,6 @@ for (const folder of commandFolders) {
         } else {
             console.log(`[WARNING] The command at ${file} is missing a required "data" or "execute" property.`)
         };
-        */
     };
 };
 
