@@ -29,7 +29,7 @@ const bot = new Client({
 
 bot.commands = new Collection();
 
-const foldersPath = path.join(import.meta.dirname, 'commands');
+const foldersPath = path.join(__dirname, 'commands');
 const commandFolders = fs.readdirSync(foldersPath);
 
 for (const folder of commandFolders) {
