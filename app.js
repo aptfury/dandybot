@@ -48,10 +48,6 @@ client.on(Events.InteractionCreate, async interaction => {
         return;
     }
 
-    if (interaction.user.id !== botAdmin) {
-        await interaction.reply({ content: 'Sorry, I can only be used by the bot developer at this time.', flags: MessageFlags.Ephemeral });
-    }
-
     try {
         await command.execute(interaction);
     } catch (err) {
