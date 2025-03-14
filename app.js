@@ -8,7 +8,10 @@ const token = process.env.DISCORD_TOKEN;
 const botAdmin = process.env.BOT_ADMIN;
 
 const client = new Client({ intents: [
-    GatewayIntentBits.Guilds
+    GatewayIntentBits.Guilds,
+    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildMembers,
+    GatewayIntentBits.GuildMessages
 ]});
 
 // Command Handler
