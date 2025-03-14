@@ -2,9 +2,10 @@
 require('dotenv').config();
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, MessageFlags } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, MessageFlags, PresenceUpdateStatus } = require('discord.js');
 
 const token = process.env.DISCORD_TOKEN;
+const botAdmin = process.env.BOT_ADMIN;
 
 const client = new Client({ intents: [
     GatewayIntentBits.Guilds
@@ -35,6 +36,7 @@ for (const folder of commandFolders) {
 // client ready
 client.once(Events.ClientReady, readyClient => {
     console.log(`Ready! Logged in as ${readyClient.user.tag}`);
+    client.user.setStatus(PresenceUpdateStatus.Online);
 });
 
 client.on(Events.InteractionCreate, async interaction => {
@@ -44,6 +46,10 @@ client.on(Events.InteractionCreate, async interaction => {
     if (!command) {
         console.error(`No command matching ${interaction.commandName} was found.`);
         return;
+    }
+
+    if (interaction.user.id !== botAdmin) {
+        await interaction.reply({ content: 'Sorry, I can only be used by the bot developer at this time.', flags: MessageFlags.Ephemeral });
     }
 
     try {
