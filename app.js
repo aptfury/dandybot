@@ -2,16 +2,32 @@
 require('dotenv').config();
 const fs = require('node:fs');
 const path = require('node:path');
-const { Client, Collection, Events, GatewayIntentBits, MessageFlags, PresenceUpdateStatus } = require('discord.js');
+const { Client, Collection, Events, GatewayIntentBits, Partials, MessageFlags, PresenceUpdateStatus } = require('discord.js');
 
 const token = process.env.DISCORD_TOKEN;
 const botAdmin = process.env.BOT_ADMIN;
 
 const client = new Client({ intents: [
+    GatewayIntentBits.AutoModerationConfiguration,
+    GatewayIntentBits.AutoModerationExecution,
+    GatewayIntentBits.DirectMessages,
+    GatewayIntentBits.DirectMessagePolls,
+    GatewayIntentBits.DirectMessageReactions,
+    GatewayIntentBits.DirectMessageTyping,
     GatewayIntentBits.Guilds,
-    GatewayIntentBits.MessageContent,
+    GatewayIntentBits.GuildExpressions,
+    GatewayIntentBits.GuildIntegrations,
     GatewayIntentBits.GuildMembers,
-    GatewayIntentBits.GuildMessages
+    GatewayIntentBits.GuildMessages,
+    GatewayIntentBits.GuildMessagePolls,
+    GatewayIntentBits.GuildMessageReactions,
+    GatewayIntentBits.GuildMessageTyping,
+    GatewayIntentBits.GuildModeration,
+    GatewayIntentBits.GuildPresences,
+    GatewayIntentBits.GuildScheduledEvents,
+    GatewayIntentBits.GuildVoiceStates,
+    GatewayIntentBits.GuildWebhooks,
+    GatewayIntentBits.MessageContent
 ]});
 
 // Command Handler
