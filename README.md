@@ -10,7 +10,7 @@ At present, the roadmap is only planned out to the point of getting this bot fun
 ###### Milestone: Reach v1.0.0
 Dand-e Bot v1.0.0 will only be officially published and launched for use when it has met the following requirements:
 
-- [ ] Posts quotes by members in the correct quotes channel.
+- [x] Posts quotes by members in the correct quotes channel.
 - [ ] Has a context menu option for quoting members.
 - [x] Has modal submission forms for feature requests.
 - [ ] Has a functional database that can reliably store and recall submitted information.
