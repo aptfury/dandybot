@@ -1,36 +1,16 @@
 const { ActionRowBuilder, Events, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
 
-module.exports = {
-    name: Events.InteractionCreate,
-    async execute(interaction) {
-        if (!interaction.isChatInputCommand()) return;
+const pingModal = new ModalBuilder()
+    .setCustomId('pingModal')
+    .setTitle('Ping Modal')
 
-        if (interaction.commandName === 'ping') {
-            const modal = new ModalBuilder()
-                .setCustomId('pingModal')
-                .setTitle('Ping Modal');
+const pingResponse = new TextInputBuilder()
+    .setCustomId('pingResponse')
+    .setLabel('What should my reply be?')
+    .setStyle(TextInputStyle.Short);
 
-            const reply = new TextInputBuilder()
-                .setCustomId('replyInput')
-                .setLabel('What should the bot reply with?')
-                .setStyle(TextInputStyle.Short)
-                .setRequired(true)
-                .setValue('Pong!');
+const actionRow = new ActionRowBuilder().addComponents(pingResponse);
 
-            const firstActionRow = new ActionRowBuilder().addComponents(reply);
+pingModal.addComponents(actionRow);
 
-            modal.addComponents(firstActionRow);
-
-            await interaction.showModal(modal);
-        }
-    },
-
-    name: Events.InteractionCreate,
-    async execute(interaction) {
-        if (!interaction.isModalSubmit()) return;
-        if (!interaction.customId === 'pingModal') return;
-        const reply = interaction.fields.getTextInputValue('reply');
-
-        await interaction.reply(reply);
-    }
-}
+module.exports = { pingModal };
