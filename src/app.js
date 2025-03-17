@@ -92,7 +92,6 @@ app.on(Events.InteractionCreate, async (interaction) => {
 
     try {
         await command.execute(interaction);
-        await interaction.guild.channels.cache.get(chan).send(`<@${admin}> Seeing if I can tag the bot creator.`);
     } catch (error) {
         logger.error(error);
 

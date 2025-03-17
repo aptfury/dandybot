@@ -12,8 +12,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js | pino-pretty -i pid,hostname -t 'yyyy-mm-dd HH:MM:ss'",
-    "deploy": "",
-    "build": "",
+    "deploy": "node ./bot/deployments/deploy-commands.js | pino-pretty -i pid,hostname -t 'yyyy-mm-dd HH:MM:ss'",
+    "build": "npm run deploy && npm run start",
     "dev": "node . | pino-pretty -i pid,hostname -t 'yyyy-mm-dd HH:MM:ss'"
   },
   "dependencies": {
