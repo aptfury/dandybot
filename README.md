@@ -11,16 +11,19 @@ At present, the roadmap is only planned out to the point of getting this bot fun
 Dand-e Bot v1.0.0 will only be officially published and launched for use when it has met the following requirements:
 
 - [x] Posts quotes by members in the correct quotes channel.
-- [ ] Has a context menu option for quoting members.
+- [ ] Change manual quotes to a modal entry. https://github.com/aptfury/dandybot/issues/3
+- [ ] Quote via message context menu. https://github.com/aptfury/dandybot/issues/1
+- [ ] Quote via user context menu. https://github.com/aptfury/dandybot/issues/2
 - [x] Has modal submission forms for feature requests.
-- [ ] Has a functional database that can reliably store and recall submitted information.
-- [ ] Has a command for submitting Dandy's World data to the database.
-- [ ] Has a command for submitting Dandy's World run data to the database.
-- [ ] Has a command to register accommodations requests.
-- [ ] Has a command to pull user information.
-- [ ] Has a report to mods command.
-- [ ] Role manager
-- [ ] Entry and exit features
+- [ ] Has a functional database that can reliably store and recall submitted information. https://github.com/aptfury/dandybot/issues/4
+- [ ] Has a command for submitting Dandy's World player characters to the database. https://github.com/aptfury/dandybot/issues/5
+- [ ] Has a command for submitting Dandy's World twisted data to the database. https://github.com/aptfury/dandybot/issues/6
+- [ ] Has a command for submitting Dandy's World maps to the database. https://github.com/aptfury/dandybot/issues/7
+- [ ] Has a command to register accommodations requests. https://github.com/aptfury/dandybot/issues/10
+- [ ] Has a report to mods command. https://github.com/aptfury/dandybot/issues/11
+- [ ] Role manager https://github.com/aptfury/dandybot/issues/8
+- [ ] Entry features https://github.com/aptfury/dandybot/issues/9
+- [ ] Exit features https://github.com/aptfury/dandybot/issues/12
 
 #### Feature Requests
 You can request a feature either through the discord server this bot is in or through github issues for this repository. Requesting a feature does not gaurantee that it will be added, but does gaurantee that it will at least be considered.
