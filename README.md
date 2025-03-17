@@ -12,14 +12,15 @@ Dand-e Bot v1.0.0 will only be officially published and launched for use when it
 
 - [ ] Posts quotes by members in the correct quotes channel.
 - [ ] Has a context menu option for quoting members.
-- [ ] Has modal submission forms for bugs and feature requests.
-- [ ] Can create new issues in its github repository.
+- [x] Has modal submission forms for feature requests.
 - [ ] Has a functional database that can reliably store and recall submitted information.
 - [ ] Has a command for submitting Dandy's World data to the database.
 - [ ] Has a command for submitting Dandy's World run data to the database.
 - [ ] Has a command to register accommodations requests.
 - [ ] Has a command to pull user information.
 - [ ] Has a report to mods command.
+- [ ] Role manager
+- [ ] Entry and exit features
 
 #### Feature Requests
 You can request a feature either through the discord server this bot is in or through github issues for this repository. Requesting a feature does not gaurantee that it will be added, but does gaurantee that it will at least be considered.
