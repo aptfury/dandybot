@@ -6,6 +6,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const { Client, Collection, Events, GatewayIntentBits } = require('discord.js');
 const logger = require('./configs/logger');
+const { User, DandyPlayable } = require('./bot/services/models');
 
 // .env
 const token = process.env.token;
@@ -37,7 +38,7 @@ const app = new Client({
         GatewayIntentBits.GuildWebhooks,
         GatewayIntentBits.MessageContent
     ]
-})
+});
 
 // app command handler
 app.commands = new Collection();
@@ -66,6 +67,9 @@ for (const folder of commandFolders) {
 
 // app ready
 app.once(Events.ClientReady, (readyApp) => {
+    User.sync();
+    DandyPlayable.sync();
+
     logger.info(`Logged in as ${readyApp.user.tag}.`)
     readyApp.channels.cache.get(chan).send(`I am alive! Muahahahaha!!`);
 })
