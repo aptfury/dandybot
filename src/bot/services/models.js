@@ -3,7 +3,6 @@ const db = new Sequelize({
     dialect: 'sqlite',
     database: 'src/databases/dandy.db'
 });
-const { ifTableExists } = require('./ifTableExists');
 
 const User = db.define(
     'User',
