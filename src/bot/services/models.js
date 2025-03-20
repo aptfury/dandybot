@@ -3,6 +3,7 @@ const db = new Sequelize({
     dialect: 'sqlite',
     database: 'src/databases/dandy.db'
 });
+const ifTableExists = require('./ifTableExists');
 
 const User = db.define(
     'User',
@@ -22,6 +23,17 @@ const User = db.define(
         }
     },
     {
+        hooks: {
+            beforeCreate: () => {
+                const exists = ifTableExists(db, 'Users');
+
+                if (exists) {
+                    return;
+                } else {
+                    User.sync();
+                };
+            }
+        },
         db,
         tableName: 'Users',
         timestamps: false,
@@ -89,6 +101,17 @@ const DandyToon = db.define(
         }
     },
     {
+        hooks: {
+            beforeCreate: () => {
+                const exists = ifTableExists(db, 'DandyToons');
+
+                if (exists) {
+                    return;
+                } else {
+                    DandyToon.sync();
+                };
+            }
+        },
         db,
         tableName: 'DandyToons',
         timestamps: false,
@@ -156,6 +179,17 @@ const DandyTwisted = db.define(
         }
     },
     {
+        hooks: {
+            beforeCreate: () => {
+                const exists = ifTableExists(db, 'DandyTwisteds');
+
+                if (exists) {
+                    return;
+                } else {
+                    DandyTwisted.sync();
+                };
+            }
+        },
         db,
         tableName: 'DandyTwisteds',
         timestamps: false
