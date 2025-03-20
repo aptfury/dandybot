@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, bold, italic, Attachment, AttachmentBuilder } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, bold, italic, Attachment, AttachmentBuilder, underline } = require('discord.js');
 const { DandyToon } = require('../../../services/models');
 
 module.exports = {
@@ -24,21 +24,34 @@ module.exports = {
                     return interaction.reply("Character has not been added to the database.");
                 }
 
+                const assignHearts = {
+                    0: ":broken_heart: :broken_heart: :broken_heart:",
+                    1: ":heart: :broken_heart: :broken_heart:",
+                    2: ":heart: :heart: :broken_heart:",
+                    3: ":heart: :heart: :heart:"
+                }
+
+                const assignStars = {
+                    0: ":eight_pointed_black_star: :eight_pointed_black_star: :eight_pointed_black_star:",
+                    1: ":star: :eight_pointed_black_star: :eight_pointed_black_star:",
+                    2: ":star: :star: :eight_pointed_black_star:",
+                    3: ":star: :star: :star:",
+                }
+
                 const { id, name, hearts, skillcheck, movement_speed, stamina, stealth, extraction_speed, ability_name, ability_type, ability_description} = char;
 
                 const characterEmbed = new EmbedBuilder()
                     .setColor('#518E87')
                     .setTitle(name)
-                    .setDescription(`
-                        ${bold("Hearts:")} ${hearts}\n
-                        ${bold("Skill Check:")} ${skillcheck}\n
-                        ${bold("Movement Speed:")} ${movement_speed}\n
-                        ${bold("Stamina:")} ${stamina}\n
-                        ${bold("Stealth:")} ${stealth}\n
-                        ${bold("Extraction Speed:")} ${extraction_speed}\n\n
-                        ${bold("Ability:")} ${bold(ability_name)} [${italic(ability_type)}]\n
-                        ${ability_description}
-                    `)
+                    .addFields(
+                        { name: 'Hearts:', value: assignHearts[hearts], inline: true },
+                        { name: 'Skill Check:', value: assignStars[skillcheck], inline: true },
+                        { name: 'Movement Speed:', value: assignStars[movement_speed], inline: true },
+                        { name: 'Stamina:', value: assignStars[stamina], inline: true },
+                        { name: 'Stealth:', value: assignStars[stealth], inline: true },
+                        { name: 'Extraction Speed:', value: assignStars[extraction_speed], inline: true },
+                        { name: `${ability_name} \(${ability_type}\)`, value: ability_description }
+                    )
                     .setFooter({ text: `${id}` })
 
                 interaction.reply({ embeds: [characterEmbed] });
