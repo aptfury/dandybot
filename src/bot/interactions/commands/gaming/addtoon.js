@@ -57,8 +57,8 @@ module.exports = {
         const abilityname = interaction.options.getString('abilityname');
         const abilitytype = interaction.options.getString('abilitytype');
         const abilitydescription = interaction.options.getString('abilitydescription');
-        const photo = require(`../../../../assets/images/dandys/toons/${name}`);
-        const avatar = require(`../../../../assets/images/dandys/toons/avatar/${name}`);
+        const photo = require(`../../../../assets/images/dandys/toons/${name}.png`) || null;
+        const avatar = require(`../../../../assets/images/dandys/toons/avatar/${name}.png`) || null;
 
         try {
             await DandyToon.create({
