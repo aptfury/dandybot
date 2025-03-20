@@ -13,38 +13,47 @@ module.exports = {
         .addIntegerOption(option =>
             option.setName('hearts')
                 .setDescription('Toon\'s hearts')
+                .setRequired(true)
         )
         .addIntegerOption(option =>
             option.setName('skillcheck')
                 .setDescription('Toon\'s skillcheck')
+                .setRequired(true)
         )
         .addIntegerOption(option =>
             option.setName('movement')
                 .setDescription('Toon\'s movement speed')
+                .setRequired(true)
         )
         .addIntegerOption(option =>
             option.setName('stamina')
                 .setDescription('Toon\'s stamina')
+                .setRequired(true)
         )
         .addIntegerOption(option =>
             option.setName('stealth')
                 .setDescription('Toon\'s stealth')
+                .setRequired(true)
         )
         .addIntegerOption(option =>
             option.setName('extraction')
                 .setDescription('Toon\'s extraction speed')
+                .setRequired(true)
         )
         .addStringOption(option =>
             option.setName('abilityname')
                 .setDescription('Toon\'s ability name')
+                .setRequired(true)
         )
         .addStringOption(option =>
             option.setName('abilitytype')
                 .setDescription('Toon\'s ability type')
+                .setRequired(true)
         )
         .addStringOption(option =>
             option.setName('abilitydescription')
                 .setDescription('Toon\'s ability description')
+                .setRequired(true)
         ),
     async execute(interaction) {
         const name = interaction.options.getString('name');
@@ -57,8 +66,6 @@ module.exports = {
         const abilityname = interaction.options.getString('abilityname');
         const abilitytype = interaction.options.getString('abilitytype');
         const abilitydescription = interaction.options.getString('abilitydescription');
-        const photo = require(`../../../../assets/images/dandys/toons/${name}.png`) || null;
-        const avatar = require(`../../../../assets/images/dandys/toons/avatar/${name}.png`) || null;
 
         try {
             await DandyToon.create({
@@ -72,8 +79,6 @@ module.exports = {
                 ability_name: abilityname,
                 ability_type: abilitytype,
                 ability_description: abilitydescription,
-                photo: photo,
-                avatar: avatar,
             }).then(chara => {
                 interaction.reply(`Character Created:\n\`\`\`${JSON.stringify(chara, null, 4)}\`\`\``);
             });

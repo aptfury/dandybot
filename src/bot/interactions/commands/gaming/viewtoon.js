@@ -1,5 +1,5 @@
-const { EmbedBuilder, SlashCommandBuilder, blockQuote, bold, italic, quote, spoiler, strikethrough, underline, subtext } = require('discord.js');
-const { DandyPlayable } = require('../../../services/models');
+const { EmbedBuilder, SlashCommandBuilder, bold, italic, Attachment, AttachmentBuilder } = require('discord.js');
+const { DandyToon } = require('../../../services/models');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -14,7 +14,7 @@ module.exports = {
         const character = await interaction.options.getString('name');
 
         try {
-            DandyPlayable.findOne({
+            DandyToon.findOne({
                 where: {
                     name: `${character}`
                 }
@@ -24,7 +24,7 @@ module.exports = {
                     return interaction.reply("Character has not been added to the database.");
                 }
 
-                const { id, name, hearts, skillcheck, movement_speed, stamina, stealth, extraction_speed, ability_name, ability_type, ability_description, photo, avatar } = char;
+                const { id, name, hearts, skillcheck, movement_speed, stamina, stealth, extraction_speed, ability_name, ability_type, ability_description} = char;
 
                 const characterEmbed = new EmbedBuilder()
                     .setColor('#518E87')
@@ -40,16 +40,6 @@ module.exports = {
                         ${ability_description}
                     `)
                     .setFooter({ text: `${id}` })
-
-                    if (photo) {
-                        characterEmbed.setImage(photo);
-                    }
-
-                    if (avatar) {
-                        characterEmbed.setAuthor({ name: "Playable Toon", iconURL: avatar });
-                    } else {
-                        characterEmbed.setAuthor({ name: "Playabale Toon" });
-                    }
 
                 interaction.reply({ embeds: [characterEmbed] });
             })
