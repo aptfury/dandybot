@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes, UUIDV4 } = require('sequelize');
+const { Sequelize, DataTypes } = require('sequelize');
 const db = new Sequelize({
     dialect: 'sqlite',
     database: 'src/databases/dandy.db'
@@ -45,58 +45,48 @@ const DandyToon = db.define(
         hearts: {
             type: DataTypes.INTEGER,
             defaultValue: 0,
-            allowNull: false
+            allowNull: true
         },
         skillcheck: {
             type: DataTypes.INTEGER,
             defaultValue: 0,
-            allowNull: false
+            allowNull: true
         },
         movement_speed: {
             type: DataTypes.INTEGER,
             defaultValue: 0,
-            allowNull: false
+            allowNull: true
         },
         stamina: {
             type: DataTypes.INTEGER,
             defaultValue: 0,
-            allowNull: false
+            allowNull: true
         },
         stealth: {
             type: DataTypes.INTEGER,
             defaultValue: 0,
-            allowNull: false
+            allowNull: true
         },
         extraction_speed: {
             type: DataTypes.INTEGER,
             defaultValue: 0,
-            allowNull: false
+            allowNull: true
         },
         ability_name: {
             type: DataTypes.STRING,
             defaultValue: "Unknown",
-            allowNull: false
+            allowNull: true
         },
         ability_type: {
             type: DataTypes.STRING,
             defaultValue: "Unknown",
-            allowNull: false
+            allowNull: true
         },
         ability_description: {
             type: DataTypes.TEXT,
             defaultValue: "Unknown",
-            allowNull: false
-        },
-        photo: {
-            type: DataTypes.STRING,
-            defaultValue: null,
             allowNull: true
-        },
-        avatar: {
-            type: DataTypes.STRING,
-            defaultValue: null,
-            allowNull: true
-        },
+        }
     },
     {
         db,
@@ -163,16 +153,6 @@ const DandyTwisted = db.define(
             type: DataTypes.TEXT,
             defaultValue: 'Unknown',
             allowNull: false
-        },
-        photo: {
-            type: DataTypes.STRING,
-            defaultValue: null,
-            allowNull: true
-        },
-        avatar: {
-            type: DataTypes.STRING,
-            defaultValue: null,
-            allowNull: true
         }
     },
     {
