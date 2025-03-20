@@ -163,4 +163,11 @@ const DandyTwisted = db.define(
     }
 )
 
-module.exports = { User, DandyToon, DandyTwisted };
+// Check if table exists
+function ifTableExists(tableName) {
+    const query = db.getQueryInterface(); // Initialize query interface
+
+    return query.tableExists(tableName)
+}
+
+module.exports = { User, DandyToon, DandyTwisted, ifTableExists };
