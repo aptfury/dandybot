@@ -1,5 +1,5 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { DandyToon, ifTableExists } = require('../../../services/models');
+const { DandyToon } = require('../../../services/models');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -66,8 +66,6 @@ module.exports = {
         const abilityname = interaction.options.getString('abilityname');
         const abilitytype = interaction.options.getString('abilitytype');
         const abilitydescription = interaction.options.getString('abilitydescription');
-
-        if (!ifTableExists('DandyToons')) DandyToon.sync();
 
         try {
             await DandyToon.create({

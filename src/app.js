@@ -67,6 +67,9 @@ for (const folder of commandFolders) {
 
 // app ready
 app.once(Events.ClientReady, (readyApp) => {
+    User.sync();
+    DandyToon.sync();
+    DandyTwisted.sync();
 
     logger.info(`Logged in as ${readyApp.user.tag}.`);
 })
