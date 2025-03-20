@@ -1,59 +1,50 @@
 const { SlashCommandBuilder } = require('discord.js');
-const { DandyPlayable } = require('../../../services/models');
+const { DandyToon } = require('../../../services/models');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('addcharacter')
+        .setName('addtoon')
         .setDescription('Adds a character into the database.')
         .addStringOption(option =>
             option.setName('name')
-                .setDescription('ksdjf')
+                .setDescription('Toon\'s Name')
                 .setRequired(true)
         )
         .addIntegerOption(option =>
             option.setName('hearts')
-                .setDescription('ksdjf')
-                .setRequired(true)
+                .setDescription('Toon\'s hearts')
         )
         .addIntegerOption(option =>
             option.setName('skillcheck')
-                .setDescription('ksdjf')
-                .setRequired(true)
+                .setDescription('Toon\'s skillcheck')
         )
         .addIntegerOption(option =>
             option.setName('movement')
-                .setDescription('ksdjf')
-                .setRequired(true)
+                .setDescription('Toon\'s movement speed')
         )
         .addIntegerOption(option =>
             option.setName('stamina')
-                .setDescription('ksdjf')
-                .setRequired(true)
+                .setDescription('Toon\'s stamina')
         )
         .addIntegerOption(option =>
             option.setName('stealth')
-                .setDescription('ksdjf')
-                .setRequired(true)
+                .setDescription('Toon\'s stealth')
         )
         .addIntegerOption(option =>
             option.setName('extraction')
-                .setDescription('ksdjf')
-                .setRequired(true)
+                .setDescription('Toon\'s extraction speed')
         )
         .addStringOption(option =>
             option.setName('abilityname')
-                .setDescription('ksdjf')
-                .setRequired(true)
+                .setDescription('Toon\'s ability name')
         )
         .addStringOption(option =>
             option.setName('abilitytype')
-                .setDescription('ksdjf')
-                .setRequired(true)
+                .setDescription('Toon\'s ability type')
         )
         .addStringOption(option =>
             option.setName('abilitydescription')
-                .setDescription('ksdjf')
-                .setRequired(true)
+                .setDescription('Toon\'s ability description')
         ),
     async execute(interaction) {
         const name = interaction.options.getString('name');
@@ -65,10 +56,12 @@ module.exports = {
         const extraction = interaction.options.getInteger('extraction');
         const abilityname = interaction.options.getString('abilityname');
         const abilitytype = interaction.options.getString('abilitytype');
-        const abilitydescription = interaction.options.getString('abilitydescription')
+        const abilitydescription = interaction.options.getString('abilitydescription');
+        const photo = require(`../../../../assets/images/dandys/toons/${name}`);
+        const avatar = require(`../../../../assets/images/dandys/toons/avatar/${name}`);
 
         try {
-            await DandyPlayable.create({
+            await DandyToon.create({
                 name: name,
                 hearts: hearts,
                 skillcheck: skillcheck,
@@ -78,12 +71,14 @@ module.exports = {
                 extraction_speed: extraction,
                 ability_name: abilityname,
                 ability_type: abilitytype,
-                ability_description: abilitydescription
+                ability_description: abilitydescription,
+                photo: photo,
+                avatar: avatar,
             }).then(chara => {
                 interaction.reply(`Character Created:\n\`\`\`${JSON.stringify(chara, null, 4)}\`\`\``);
             });
         } catch (e) {
-            interaction.reply(`\`\`\`${e}\`\`\``)
+            interaction.reply(`\`\`\`${e}\`\`\``);
         }
     }
 }
