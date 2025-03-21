@@ -13,6 +13,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "delete": "node ./bot/deployments/delcommands.js | pino-pretty -i pid,hostname -t 'yyyy-mm-dd HH:MM:ss'",
     "deploy": "node ./bot/deployments/deploy-commands.js | pino-pretty -i pid,hostname -t 'yyyy-mm-dd HH:MM:ss'",
+    "contexts": "node ./bot/deployments/deploy-contexts.js | pino-pretty -i pid,hostname -t 'yyyy-mm-dd HH:MM:ss'",
     "start": "node app.js | pino-pretty -i pid,hostname -t 'yyyy-mm-dd HH:MM:ss'",
     "refresh": "npm run delete && npm run deploy",
     "build": "npm run deploy && npm run start",
