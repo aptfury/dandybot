@@ -1,5 +1,5 @@
 require('dotenv').config({ path: '../src/configs/.env' });
-const { EmbedBuilder, InteractionContextType, PermissionFlagsBits, SlashCommandBuilder, MessageFlags } = require('discord.js');
+const { EmbedBuilder, InteractionContextType, PermissionFlagsBits, SlashCommandBuilder, MessageFlags, ChatInputCommandInteraction } = require('discord.js');
 const logger = require('../../../../configs/logger');
 
 const quotesChannel = process.env.dandy_quotes_chan_id;
@@ -21,10 +21,14 @@ module.exports = {
         )
         .setDefaultMemberPermissions(PermissionFlagsBits.SendMessages)
         .setContexts(InteractionContextType.Guild),
+    /**
+     * 
+     * @param {ChatInputCommandInteraction} interaction 
+     */
     async execute(interaction) {
-        const user = await interaction.options.getMember('user');
-        const quote = await interaction.options.getString('quote')
-        const channel = await interaction.guild.channels.cache.get(quotesChannel);
+        const user = interaction.options.getMember('user');
+        const quote = interaction.options.getString('quote')
+        const channel = interaction.guild.channels.cache.get(quotesChannel);
         const name = user.displayName;
 
         const quoteEmbed = new EmbedBuilder()

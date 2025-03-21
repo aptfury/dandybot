@@ -1,4 +1,4 @@
-const { EmbedBuilder, SlashCommandBuilder, bold, italic, Attachment, AttachmentBuilder, underline } = require('discord.js');
+const { EmbedBuilder, SlashCommandBuilder, bold, italic, Attachment, AttachmentBuilder, underline, ChatInputCommandInteraction } = require('discord.js');
 const { DandyTwisted } = require('../../../services/models');
 
 module.exports = {
@@ -55,6 +55,10 @@ module.exports = {
                 .setDescription('The behavior and activity information')
                 .setRequired(true)
         ),
+    /**
+     * 
+     * @param {ChatInputCommandInteraction} interaction 
+     */
     async execute(interaction) {
         const name = await interaction.options.getString('name');
         const threat = await interaction.options.getString('threat');
@@ -79,9 +83,15 @@ module.exports = {
                 ability_cooldown: cooldown,
                 ability_description: abilityDescription,
                 info: info
-            }).then(chara => {
-                interaction.reply(`Twisted Created:\n\`\`\`${JSON.stringify(chara, null, 4)}\`\`\``);
-            });
+            }).then(
+                /**
+                 * 
+                 * @param {DandyTwisted} chara 
+                 */
+                chara => {
+                    interaction.reply(`Twisted Created:\n\`\`\`${JSON.stringify(chara, null, 4)}\`\`\``);
+                }
+            );
         } catch (e) {
             throw new Error(e);
         }

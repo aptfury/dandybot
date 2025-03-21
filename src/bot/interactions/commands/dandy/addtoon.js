@@ -1,4 +1,4 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 const { DandyToon } = require('../../../services/models');
 
 module.exports = {
@@ -55,6 +55,10 @@ module.exports = {
                 .setDescription('Toon\'s ability description')
                 .setRequired(true)
         ),
+    /**
+     * 
+     * @param {ChatInputCommandInteraction} interaction 
+     */
     async execute(interaction) {
         const name = interaction.options.getString('name');
         const hearts = interaction.options.getInteger('hearts');
@@ -79,9 +83,15 @@ module.exports = {
                 ability_name: abilityname,
                 ability_type: abilitytype,
                 ability_description: abilitydescription,
-            }).then(chara => {
-                interaction.reply(`Character Created:\n\`\`\`${JSON.stringify(chara, null, 4)}\`\`\``);
-            });
+            }).then(
+                /**
+                 * 
+                 * @param {DandyToon} chara 
+                 */
+                chara => {
+                    interaction.reply(`Character Created:\n\`\`\`${JSON.stringify(chara, null, 4)}\`\`\``);
+                }
+            );
         } catch (e) {
             interaction.reply(`\`\`\`${e}\`\`\``);
         }
