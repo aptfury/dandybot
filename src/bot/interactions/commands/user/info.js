@@ -1,10 +1,14 @@
-const { SlashCommandBuilder } = require('discord.js');
+const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 const { User } = require('../../../services/models');
 
 module.exports = {
     data: new SlashCommandBuilder()
         .setName('info')
         .setDescription('Pull up your database info.'),
+    /**
+     * 
+     * @param {ChatInputCommandInteraction} interaction 
+     */
     async execute(interaction) {
         const id = interaction.user.id;
 

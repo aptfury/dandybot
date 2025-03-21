@@ -1,5 +1,5 @@
 require('dotenv').config({ path: '../src/configs/.env' });
-const { ContextMenuCommandBuilder, ApplicationCommandType, EmbedBuilder, MessageFlags } = require('discord.js');
+const { ContextMenuCommandBuilder, ApplicationCommandType, EmbedBuilder, MessageFlags, UserContextMenuCommandInteraction, ModalSubmitInteraction } = require('discord.js');
 const { customQuoteModal } = require('../../modals/addUserQuote');
 const quotesChannel = process.env.dandy_quotes_chan_id;
 
@@ -7,11 +7,14 @@ module.exports = {
     data: new ContextMenuCommandBuilder()
         .setName('Quote User')
         .setType(ApplicationCommandType.User),
+    /**
+     * 
+     * @param {UserContextMenuCommandInteraction} interaction 
+     * @returns 
+     */
     async execute(interaction) {
-        const targetUser = interaction.targetUser;
-        const id = targetUser.id;
-        const member = interaction.guild.members.cache.get(id);
-        const nick = member.nickname || member.displayName;
+        const targetMember = interaction.targetMember;
+        const nick = targetMember.nickname || targetMember.displayName;
         const channel = interaction.guild.channels.cache.get(quotesChannel);
 
         if (targetUser === interaction.client.user) {
@@ -21,20 +24,32 @@ module.exports = {
 
         customQuoteModal(interaction, nick);
 
+        /**
+         * 
+         * @param {ModalSubmitInteraction} interaction 
+         * @returns 
+         */
         const filter = (interaction) => interaction.customId === 'addUserQuote';
         interaction.awaitModalSubmit({ filter, time: 15_000 })
-        .then((interaction) => {
-            const response = interaction.fields.getTextInputValue('content');
+        .then(
+            /**
+             * 
+             * @param {ModalSubmitInteraction} interaction 
+             * @returns
+             */
+            (interaction) => {
+                const response = interaction.fields.getTextInputValue('content');
 
-            const quoteEmbed = new EmbedBuilder()
-                .setColor(0x0099FF)
-                .setDescription(`${response}`)
-                .setTimestamp()
-                .setFooter({ text: `${nick}` });
-            
-            channel.send({ embeds: [ quoteEmbed ] });
-            interaction.reply({ content: "Sent to the quote channel!", flags: MessageFlags.Ephemeral });
-        })
+                const quoteEmbed = new EmbedBuilder()
+                    .setColor(0x0099FF)
+                    .setDescription(`${response}`)
+                    .setTimestamp()
+                    .setFooter({ text: `${nick}` });
+                
+                channel.send({ embeds: [ quoteEmbed ] });
+                interaction.reply({ content: "Sent to the quote channel!", flags: MessageFlags.Ephemeral });
+            }
+        )
         .catch(e => console.log(e));
     }
 }
