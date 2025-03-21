@@ -10,7 +10,8 @@ module.exports = {
         const message = interaction.targetMessage;
         const content = message.content.toString();
         const id = message.author.id;
-        const author = interaction.guild.members.cache.get(id).nickname;
+        const member = interaction.guild.members.cache.get(id);
+        const author = member.nickname || member.displayName;
         const channel = await interaction.guild.channels.cache.get(quotesChannel);
 
         if (message.author === interaction.client.user) {
