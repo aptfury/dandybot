@@ -21,7 +21,7 @@ Dand-e Bot v1.0.0 will only be officially published and launched for use when it
 - [ ] Entry features https://github.com/aptfury/dandybot/issues/9
 - [ ] Exit features https://github.com/aptfury/dandybot/issues/12
 - [ ] Create User Documentation https://github.com/aptfury/dandybot/issues/16
-- [ ] Type Enforcement Clean Up https://github.com/aptfury/dandybot/issues/26
+- [x] Type Enforcement Clean Up https://github.com/aptfury/dandybot/issues/26
 - [ ] Event Handlers. https://github.com/aptfury/dandybot/issues/27
 
 ###### Milestone: Reach v1.5.0
