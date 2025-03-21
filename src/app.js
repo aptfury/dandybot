@@ -85,7 +85,7 @@ app.on(Events.Error, error => logger.error(error));
 
 // app interaction registration
 app.on(Events.InteractionCreate, async (interaction) => {
-    if (!interaction.isChatInputCommand()) return;
+    if (!interaction.isChatInputCommand() || !interaction.isMessageContextMenuCommand()) return;
 
     const command = interaction.client.commands.get(interaction.commandName);
 
