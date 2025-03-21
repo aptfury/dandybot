@@ -14,7 +14,6 @@ Dand-e Bot v1.0.0 will only be officially published and launched for use when it
 - [x] ~~Change manual quotes to a modal entry. https://github.com/aptfury/dandybot/issues/3~~
 - [x] Quote via message context menu. https://github.com/aptfury/dandybot/issues/1
 - [x] Quote via user context menu. https://github.com/aptfury/dandybot/issues/2
-- [x] Has modal submission forms for feature requests.
 - [x] Has a functional database that can reliably store and recall submitted information. https://github.com/aptfury/dandybot/issues/4
 - [x] Has a command for submitting Dandy's World player characters to the database. https://github.com/aptfury/dandybot/issues/5
 - [x] Has a command for submitting Dandy's World twisted data to the database. https://github.com/aptfury/dandybot/issues/6
