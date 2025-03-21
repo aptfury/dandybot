@@ -65,6 +65,29 @@ for (const folder of commandFolders) {
     }
 }
 
+// app contexts handler
+app.contexts = new Collection();
+
+const contextFolderPath = path.join(__dirname, './bot/interactions/menus');
+const contextFolders = fs.readdirSync(contextFolderPath);
+
+for (const folder of contextFolders) {
+    const contextsPath = path.join(contextFolderPath, folder);
+    const contextFiles = fs.readdirSync(contextsPath).filter((file) => file.endsWith('.js'));
+
+    for (const file of contextFiles) {
+        const filePath = path.join(contextsPath, file);
+        const context = require(filePath);
+
+        if ('data' in context && 'execute' in context) {
+            app.contexts.set(context.data.name, context);
+            logger.info(`${context.data.name} has been added.`);
+        } else {
+            logger.warn(`The context menu at ${filePath} is missing a required "data" or "execute" property.`);
+        }
+    }
+}
+
 // app ready
 app.once(Events.ClientReady, (readyApp) => {
     User.sync();
@@ -83,7 +106,33 @@ app.on(Events.Warn, info => logger.warn(info));
 // app error
 app.on(Events.Error, error => logger.error(error));
 
-// app interaction registration
+// app message context menu event
+app.on(Events.InteractionCreate, async (interaction) => {
+    if (!interaction.isMessageContextMenuCommand()) return;
+
+    const context = interaction.client.contexts.get(interaction.commandName);
+
+    if (!context) {
+        logger.error(`No context matching ${interaction.commandName} was found.`);
+        return;
+    }
+
+    try {
+        await context.execute(interaction);
+    } catch (error) {
+        logger.error(error);
+
+        if (interaction.replied || interaction.deferred) {
+            await interaction.followUp('There was an error while executing this context menu command.');
+            await interaction.guild.channels.cache.get(chan).send(`<@${admin}> Error Report:\n\`\`\`${error}\`\`\``);
+        } else {
+            await interaction.reply('There was an error while executing this context menu command.');
+            await interaction.guild.channels.cache.get(chan).send(`<@${admin}> Error Report:\n\`\`\`${error}\`\`\``);
+        }
+    }
+});
+
+// app chat command event
 app.on(Events.InteractionCreate, async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
 
