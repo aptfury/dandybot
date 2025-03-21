@@ -38,7 +38,7 @@ module.exports = {
                     3: ":star: :star: :star:",
                 }
 
-                const { id, name, hearts, skillcheck, movement_speed, stamina, stealth, extraction_speed, ability_name, ability_type, ability_description} = char;
+                const { id, name, hearts, skillcheck, movement_speed, stamina, stealth, extraction_speed, ability_name, ability_type, ability_description } = char;
 
                 const characterEmbed = new EmbedBuilder()
                     .setColor('#518E87')
