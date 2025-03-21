@@ -132,6 +132,32 @@ app.on(Events.InteractionCreate, async (interaction) => {
     }
 });
 
+// app user context menu event
+app.on(Events.InteractionCreate, async (interaction) => {
+    if (!interaction.isUserContextMenuCommand()) return;
+
+    const context = interaction.client.contexts.get(interaction.commandName);
+
+    if (!context) {
+        logger.error(`No context matching ${interaction.commandName} was found.`);
+        return;
+    }
+
+    try {
+        await context.execute(interaction);
+    } catch (error) {
+        logger.error(error);
+
+        if (interaction.replied || interaction.deferred) {
+            await interaction.followUp('There was an error while executing this contexts menu command.');
+            await interaction.guild.channels.cache.get(chan).send(`<@${admin}> Error Report:\n\`\`\`${error}\`\`\``);
+        } else {
+            await interaction.reply('There was an error while executing this context menu command.');
+            await interaction.guild.channels.cache.get(chan).send(`<@${admin}> Error Report:\n\`\`\`${error}\`\`\``);
+        }
+    }
+});
+
 // app chat command event
 app.on(Events.InteractionCreate, async (interaction) => {
     if (!interaction.isChatInputCommand()) return;
