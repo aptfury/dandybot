@@ -1,10 +1,10 @@
 const { EmbedBuilder, SlashCommandBuilder, bold, italic, Attachment, AttachmentBuilder, underline } = require('discord.js');
-const { DandyToon } = require('../../../services/models');
+const { DandyTwisted } = require('../../../services/models');
 
 module.exports = {
     data: new SlashCommandBuilder()
-        .setName('viewtoon')
-        .setDescription('Pull up character info.')
+        .setName('viewtwisted')
+        .setDescription('Pull up twisted info.')
         .addStringOption((option) =>
             option.setName('name')
                 .setDescription('character name')
@@ -14,7 +14,7 @@ module.exports = {
         const character = await interaction.options.getString('name');
 
         try {
-            DandyToon.findOne({
+            DandyTwisted.findOne({
                 where: {
                     name: `${character}`
                 }
@@ -24,13 +24,6 @@ module.exports = {
                     return interaction.reply("Character has not been added to the database.");
                 }
 
-                const assignHearts = {
-                    0: ":broken_heart: :broken_heart: :broken_heart:",
-                    1: ":heart: :broken_heart: :broken_heart:",
-                    2: ":heart: :heart: :broken_heart:",
-                    3: ":heart: :heart: :heart:"
-                }
-
                 const assignStars = {
                     0: ":eight_pointed_black_star: :eight_pointed_black_star: :eight_pointed_black_star:",
                     1: ":star: :eight_pointed_black_star: :eight_pointed_black_star:",
@@ -38,19 +31,20 @@ module.exports = {
                     3: ":star: :star: :star:",
                 }
 
-                const { id, name, hearts, skillcheck, movement_speed, stamina, stealth, extraction_speed, ability_name, ability_type, ability_description } = char;
+                const { id, name, threat, kiting_difficulty, movement_speed, sight, attention_span, ability_name, ability_cooldown, ability_description, info } = char;
 
                 const characterEmbed = new EmbedBuilder()
                     .setColor('#518E87')
                     .setTitle(name)
+                    .setDescription(info)
                     .addFields(
-                        { name: 'Hearts:', value: assignHearts[hearts], inline: true },
-                        { name: 'Skill Check:', value: assignStars[skillcheck], inline: true },
+                        { name: 'Threat:', value: threat, inline: true },
+                        { name: 'Type:', value: kiting_difficulty, inline: true },
                         { name: 'Movement Speed:', value: assignStars[movement_speed], inline: true },
-                        { name: 'Stamina:', value: assignStars[stamina], inline: true },
-                        { name: 'Stealth:', value: assignStars[stealth], inline: true },
-                        { name: 'Extraction Speed:', value: assignStars[extraction_speed], inline: true },
-                        { name: `${ability_name} \(${ability_type}\)`, value: ability_description }
+                        { name: 'Sight:', value: assignStars[sight], inline: true },
+                        { name: 'Aggro Time:', value: assignStars[attention_span], inline: true },
+                        { name: 'Cooldown:', value: `${ability_cooldown} sec.`, inline: true },
+                        { name: `${ability_name}`, value: ability_description }
                     )
                     .setFooter({ text: `${id}` })
 
