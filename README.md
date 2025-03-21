@@ -40,7 +40,7 @@ Dand-e Bot v1.0.0 will only be officially published and launched for use when it
 These issues have been postponed with further posts detailing why that is.
 
 - [ ] Has a command for submitting Dandy's World maps to the database. https://github.com/aptfury/dandybot/issues/7
-- [ ] Adding twisted and toon photos to database info/response embed.
+- [ ] Adding twisted and toon photos to database info/response embed. https://github.com/aptfury/dandybot/issues/13
 
 #### Feature Requests
 You can request a feature either through the discord server this bot is in or through github issues for this repository. Requesting a feature does not gaurantee that it will be added, but does gaurantee that it will at least be considered.
