@@ -1,4 +1,12 @@
 import pino from 'pino';
-const logger = pino();
+
+const transport = pino.transport({
+    target: 'pino/file',
+    options: {
+        destination: './log.json'
+    },
+});
+
+const logger = pino(transport);
 
 export { logger };
