@@ -6,13 +6,27 @@ const token = process.env.TOKEN;
 
 const bot = new Client({
     intents: [
+        GatewayIntentBits.AutoModerationConfiguration,
+        GatewayIntentBits.AutoModerationExecution,
+        GatewayIntentBits.DirectMessages,
+        GatewayIntentBits.DirectMessagePolls,
+        GatewayIntentBits.DirectMessageReactions,
+        GatewayIntentBits.DirectMessageTyping,
         GatewayIntentBits.Guilds,
+        GatewayIntentBits.GuildExpressions,
+        GatewayIntentBits.GuildIntegrations,
+        GatewayIntentBits.GuildInvites,
         GatewayIntentBits.GuildMembers,
-        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildMessagePolls,
         GatewayIntentBits.GuildMessageReactions,
         GatewayIntentBits.GuildMessageTyping,
-        GatewayIntentBits.GuildMessagePolls,
-        GatewayIntentBits.GuildModeration
+        GatewayIntentBits.GuildMessages,
+        GatewayIntentBits.GuildModeration,
+        GatewayIntentBits.GuildPresences,
+        GatewayIntentBits.GuildScheduledEvents,
+        GatewayIntentBits.GuildVoiceStates,
+        GatewayIntentBits.GuildWebhooks,
+        GatewayIntentBits.MessageContent
     ]
 });
 
