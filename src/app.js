@@ -35,7 +35,7 @@ const bot = new Client({
 // bot command handler
 bot.commands = new Collection();
 
-const commandsPath = path.join(__dirname, './bot/interactions/commands');
+const commandsPath = path.join(import.meta.dirname, './bot/interactions/commands');
 const commandFolders = fs.readdirSync(commandsPath);
 
 for (const folder of commandFolders) {
@@ -61,5 +61,7 @@ for (const folder of commandFolders) {
 bot.once(Events.ClientReady, readyBot => {
     logger.info(`Ready and logged in as ${readyBot.user.tag}`);
 });
+
+process.on('unhandledRejection', error => logger.error('Unhandled promise Rejection:', error));
 
 bot.login(token);
