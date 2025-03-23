@@ -20,8 +20,10 @@ const transport = pino.transport({
             },
         },
     ],
+    dedupe: true,
+    sync: true,
 });
 
 const logger = pino(transport);
 
-export { logger };
+export default logger;
