@@ -21,7 +21,6 @@
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.68",
-    "chalk": "^5.4.1",
     "dayjs": "^1.11.13",
     "discord.js": "^14.18.0",
     "dotenv": "^16.4.7",
