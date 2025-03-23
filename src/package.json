@@ -4,20 +4,20 @@
   "description": "A custom discord bot for dandyrifs world",
   "license": "MIT",
   "author": "BeeWitched",
-  "type": "module",
+  "type": "commonjs",
   "main": "app.js",
   "directories": {
     "test": "test"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "delete": "node ./bot/deployments/delcommands.js | pino-pretty -i pid,hostname -t 'yyyy-mm-dd HH:MM:ss'",
-    "deploy": "node ./bot/deployments/deploy-commands.js | pino-pretty -i pid,hostname -t 'yyyy-mm-dd HH:MM:ss'",
-    "contexts": "node ./bot/deployments/deploy-contexts.js | pino-pretty -i pid,hostname -t 'yyyy-mm-dd HH:MM:ss'",
+    "delete": "node ./bot/deployments/delcommands.js",
+    "deploy": "node ./bot/deployments/deploy-commands.js",
+    "contexts": "node ./bot/deployments/deploy-contexts.js",
     "start": "node app.js",
     "refresh": "npm run delete && npm run deploy",
     "build": "npm run deploy && npm run start",
-    "dev": "node . | pino-pretty -i pid,hostname -t 'yyyy-mm-dd HH:MM:ss'"
+    "dev": "node ."
   },
   "dependencies": {
     "@napi-rs/canvas": "^0.1.68",
