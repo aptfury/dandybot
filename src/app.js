@@ -1,4 +1,4 @@
-import { Client, Collection, Events, GatewayIntentBits } from 'discord.js';
+import { Client, Collection, Events, GatewayIntentBits, MessageFlags } from 'discord.js';
 import './configs/env.js';
 import logger from './configs/logger.js';
 import fs from 'node:fs';
@@ -56,10 +56,35 @@ for (const folder of commandFolders) {
         })
         .catch(e => logger.error(e));
     }
-}
+};
 
 bot.once(Events.ClientReady, readyBot => {
     logger.info(`Ready and logged in as ${readyBot.user.tag}`);
+});
+
+bot.on(Events.InteractionCreate, async interaction => {
+    if (!interaction.isChatInputCommand()) return;
+    
+    const command = interaction.client.commands.get(interaction.commandName);
+
+    if (!command) {
+        logger.error(`No command matching ${interaction.commandName} was found.`);
+        return;
+    }
+
+    try {
+        await command.execute(interaction);
+    }
+    catch (e) {
+        logger.error(e);
+
+        if (interaction.replied || interaction.deferred) {
+            await interaction.followUp({ content: `There was an error whle executing this command!`, flags: MessageFlags.Ephemeral });
+        }
+        else {
+            await interaction.reply({ content: 'There was an error while executing this command!', flags: MessageFlags.Ephemeral });
+        }
+    }
 });
 
 process.on('unhandledRejection', error => logger.error('Unhandled promise Rejection:', error));
