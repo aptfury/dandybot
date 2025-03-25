@@ -175,4 +175,4 @@ async function getTwistedId(info) {
 // DELETE
 
 // EXPORTS
-module.exports = { createToon, readToon, getToonId, createToonStats, createTwisted, getTwistedId };
+module.exports = { createToon, readToon, getToonId, createToonStats, createTwisted, getTwistedId, createTwistedStats };
