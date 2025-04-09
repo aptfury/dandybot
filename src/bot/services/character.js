@@ -50,58 +50,6 @@ async function createTwisted(info) {
     }
 }
 
-/**
- * 
- * @param {Stats} stats 
- */
-function createToonStats(stats) {
-    new result = new Promise((resolve, reject) => {
-        if (!stats.id || typeof stats.id === 'object') reject(`We were not able to add these stats to the toon. Please make sure they are already in the database before trying to update their stats.`);
-        if (!stats.name) reject(`There wasn't a toon with that name in the database.`);
-
-        try {
-            stats.insertOne(stats);
-            resolve(`You have successfully updated ${stats.name}'s stats in the database.`);
-        }
-        catch (e) {
-            reject({
-                message: `An error occured when trying to add ${stats.name}'s stats to the database.`,
-                error: e
-            });
-        }
-    })
-    .then(data => data, e => e)
-    .catch(e => console.error(e));
-
-    return result;
-}
-
-/**
- * 
- * @param {Stats} stats
- */
-function createTwistedStats(stats) {
-    new result = new Promise((resolve, reject) => {
-        if (!stats.id || typeof stats.id === 'object') reject(`We were not able to add these stats to the twisted. Please make sure they are already in the database before trying to update their stats.`);
-        if (!stats.name) reject(`There wasn't a twisted with that name in the database.`);
-
-        try {
-            statistics.insertOne(stats);
-            resolve(`You have successfully updated ${stats.name}'s stats to the database.`);
-        }
-        catch (e) {
-            reject({
-                message: `An error occured when trying to add ${stats.name}'s stats to the database.`,
-                error: e
-            })
-        }
-    })
-    .then(data => data, e => e)
-    .catch(e => console.error(e));
-
-    return result;
-}
-
 // READ
 /**
  * 
@@ -116,6 +64,29 @@ async function readToon(info) {
          *      (1) Have this return the class instead of the document?
          */
         const doc = await toon.findOne(filter);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return {
+            message: `There was an error retrieving this information.`,
+            error: e
+        }
+    }
+}
+
+/**
+ * 
+ * @param {Object} info
+ */
+async function readTwisted(info) {
+    const filter = info;
+
+    try {
+        /**
+         * TODO:
+         *      (1) Have this return the class instead of the document?
+         */
+        const doc = await twisted.findOne(filter);
         return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
     }
     catch (e) {
@@ -175,4 +146,4 @@ async function getTwistedId(info) {
 // DELETE
 
 // EXPORTS
-module.exports = { createToon, readToon, getToonId, createToonStats, createTwisted, getTwistedId, createTwistedStats };
+module.exports = { createToon, readToon, getToonId, createTwisted, getTwistedId, readTwisted };
