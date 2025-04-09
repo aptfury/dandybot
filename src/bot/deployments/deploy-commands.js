@@ -29,6 +29,25 @@ for (const folder of commandFolders) {
     }
 }
 
+const contextFoldersPath = path.join(__dirname, '../interactions/menus');
+const contextFolders = fs.readdirSync(contextFoldersPath);
+
+for (const folder of contextFolders) {
+    const contextsPath = path.join(contextFoldersPath, folder);
+    const contextFiles = fs.readdirSync(contextsPath).filter(file => file.endsWith('.js'));
+
+    for (const file of contextFiles) {
+        const filePath = path.join(contextsPath, file);
+        const context = require(filePath);
+
+        if ('data' in context && 'execute' in context) {
+            commands.push(context.data.toJSON());
+        } else {
+            logger.warn(`The context menu at ${filePath} is missing a required "data" or "execute" property.`);
+        }
+    }
+}
+
 const rest = new REST().setToken(token);
 
 (async () => {
