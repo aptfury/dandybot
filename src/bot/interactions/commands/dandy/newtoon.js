@@ -1,7 +1,8 @@
 const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 const Toons = require('../../../services/models/toons.js');
-const { createToon } = require('../../../services/character.js');
+const { createToon, createTwisted } = require('../../../services/character.js');
 const { logger } = require('../../../../configs/logger.js');
+const Twisteds = require('../../../models/twisteds.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -17,11 +18,23 @@ module.exports = {
      * @param {ChatInputCommandInteraction} interaction 
      */
     async execute(interaction) {
-        const name = interaction.options.getString('name');
-        const toon = new Toons(name);
+        const nameData = {
+            name: interaction.options.getString('name')
+        };
+        const toon = new Toons(nameData);
+        const twisted = new Twisteds(nameData);
+        const response = {
+            twisted: null,
+            toon: null
+        }
 
-        await createToon(toon)
-        .then(async response => await interaction.reply(response))
+        await createTwisted(twisted)
+        .then(res => response.twisted = res)
         .catch(e => logger.error(e));
+        await createToon(toon)
+        .then(res => response.toon = res)
+        .catch(e => logger.error(e));
+
+        await interaction.reply(`\`\`\`${response}\`\`\``);
     }
 }

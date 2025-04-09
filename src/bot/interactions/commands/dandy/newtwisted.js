@@ -1,3 +1,7 @@
+/**
+ * FIXME: DEPRECATED
+ */
+
 const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 const Twisteds = require('../../../services/models/twisteds.js');
 const { createTwisted } = require('../../../services/character.js');
