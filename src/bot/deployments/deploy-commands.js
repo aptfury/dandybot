@@ -9,11 +9,11 @@ const bot_id = process.env.APP_ID;
 
 const commands = [];
 
-const foldersPath = path.join(__dirname, '../interactions/commands');
-const commandFolders = fs.readdirSync(foldersPath);
+const commandsPath = path.join(__dirname, '../interactions/commands');
+const commandFolders = fs.readdirSync(commandsPath);
 
 for (const folder of commandFolders) {
-    const commandsPath = path.join(foldersPath, folder);
+    const commandsPath = path.join(commandsPath, folder);
     const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
 
     for (const file of commandFiles) {
@@ -29,11 +29,11 @@ for (const folder of commandFolders) {
     }
 }
 
-const contextFoldersPath = path.join(__dirname, '../interactions/menus');
-const contextFolders = fs.readdirSync(contextFoldersPath);
+const contextsPath = path.join(__dirname, '../interactions/menus');
+const contextFolders = fs.readdirSync(contextsPath);
 
 for (const folder of contextFolders) {
-    const contextsPath = path.join(contextFoldersPath, folder);
+    const contextsPath = path.join(contextsPath, folder);
     const contextFiles = fs.readdirSync(contextsPath).filter(file => file.endsWith('.js'));
 
     for (const file of contextFiles) {
