@@ -1,0 +1,33 @@
+module.exports = class TeamRecords {
+    constructor(data) {
+        this._id = data._id,
+        this.team = data.team,
+        this.time = data.time,
+        this.floor = data.floor,
+        this.player1 = data.player1,
+        this.player2 = data.player2,
+        this.player3 = data.player3,
+        this.player4 = data.player4,
+        this.player5 = data.player5,
+        this.player6 = data.player6,
+        this.player7 = data.player7,
+        this.player8 = data.player8,
+        this.main1 = data.main1,
+        this.main2 = data.main2,
+        this.main3 = data.main3,
+        this.main4 = data.main4,
+        this.main5 = data.main5,
+        this.main6 = data.main6,
+        this.main7 = data.main7,
+        this.main8 = data.main8,
+        this.role1 = data.role1,
+        this.role2 = data.role2,
+        this.role3 = data.role3,
+        this.role4 = data.role4,
+        this.role5 = data.role5,
+        this.role6 = data.role6,
+        this.role7 = data.role7,
+        this.role8 = data.role8,
+        this.notes = data.notes
+    }
+}

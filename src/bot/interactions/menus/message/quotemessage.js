@@ -1,6 +1,6 @@
-require('dotenv').config({ path: '../src/configs/.env' });
-const { ContextMenuCommandBuilder, ApplicationCommandType, EmbedBuilder, MessageFlags, MessageContextMenuCommandInteraction } = require('discord.js');
-const quotesChannel = process.env.dandy_quotes_chan_id;
+require('dotenv').config();
+const { ContextMenuCommandBuilder, ApplicationCommandType, EmbedBuilder, MessageFlags, MessageContextMenuCommandInteraction, quote } = require('discord.js');
+const quotesChannel = process.env.DANDY_QUOTE_CHAN_ID;
 
 module.exports = {
     data: new ContextMenuCommandBuilder()
@@ -8,8 +8,8 @@ module.exports = {
         .setType(ApplicationCommandType.Message),
     /**
      * 
-     * @param {MessageContextMenuCommandInteraction} interaction 
-     * @returns 
+     * @param {MessageContextMenuCommandInteraction} interaction
+     * @returns
      */
     async execute(interaction) {
         const message = interaction.targetMessage;
@@ -19,7 +19,10 @@ module.exports = {
         const channel = interaction.guild.channels.cache.get(quotesChannel);
 
         if (message.author === interaction.client.user) {
-            interaction.reply({ content: "Sorry! I am simply too powerful to be quoted!", flags: MessageFlags.Ephemeral });
+            interaction.reply({
+                content: "Sorry! I am simply too powerful to be quoted!",
+                flags: MessageFlags.Ephemeral
+            });
             return;
         }
 
@@ -27,15 +30,18 @@ module.exports = {
             .setColor(0x0099FF)
             .setDescription(`${content}`)
             .setTimestamp()
-            .setFooter({ text: `${author}` });
+            .setFooter({ text: `${author}` })
 
         try {
             await message.react('⭐');
             await channel.send({ embeds: [ quoteEmbed ] });
-            await interaction.reply({ content: "The message you selected has been sent to the quotes channel!", flags: MessageFlags.Ephemeral });
+            await interaction.reply({
+                content: "The message you selected has been sent to the quotes channel!",
+                flags: MessageFlags.Ephemeral
+            });
         }
         catch (e) {
-            throw new Error(e);
+            console.error(e);
         }
     }
 }
