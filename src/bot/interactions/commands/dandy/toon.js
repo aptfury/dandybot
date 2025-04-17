@@ -59,7 +59,7 @@ module.exports = {
             await interaction.reply(`\`\`\`${response}\`\`\``);
         }
         else if (subcom === 'find') {
-            const name = interaction.options.getString('name');
+            const name = interaction.options.getString('search');
             const toon = { name: name };
 
             await readToon(toon)
