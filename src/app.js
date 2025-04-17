@@ -10,6 +10,7 @@ const path = require('node:path');
  *      .ENV VARIABLES
  ***********************************/
 const token = process.env.TOKEN;
+const devChannel = process.env.DANDY_BOT_DEV_CHAN_ID;
 
 /***********************************
  *      BOT CLIENT INIT
@@ -129,10 +130,60 @@ bot.on(Events.InteractionCreate, async interaction => {
 /***********************************
  *      CONTEXT_MESSAGE EVENT
  ***********************************/
+bot.on(Events.InteractionCreate, async interaction => {
+    if (!interaction.isMessageContextMenuCommand()) return;
+
+    const context = interaction.client.contexts.get(interaction.commandName);
+
+    if (!context) {
+        console.error(`This message context menu could not be found.`);
+        return;
+    }
+
+    try {
+        await context.execute(interaction);
+    }
+    catch (e) {
+        console.error(e);
+
+        if (interaction.replied || interaction.deferred) {
+            await interaction.followUp({ content: `There was an error while executing this message context menu command.`, flags: MessageFlags.Ephemeral });
+            await interaction.guild.channels.get(devChannel).send(`Error Report:\n\`\`\`${e}\`\`\``);
+        } else {
+            await interaction.reply({ content: `There was an error executing this message context menu command.`, flags: MessageFlags.Ephemeral });
+            await interaction.guild.channels.get(devChannel).send(`Error Report:\n\`\`\`${e}\`\`\``);
+        }
+    }
+});
 
 /***********************************
  *      CONTEXT_USER EVENT
  ***********************************/
+bot.on(Events.InteractionCreate, async interaction => {
+    if (!interaction.isUserContextMenuCommand()) return;
+
+    const context = interaction.client.contexts.get(interaction.commandName);
+
+    if (!context) {
+        console.error(`This user context menu could not be found.`);
+        return;
+    }
+
+    try {
+        await context.execute(interaction);
+    }
+    catch (e) {
+        console.error(e);
+
+        if (interaction.replied || interaction.deferred) {
+            await interaction.followUp({ content: `There was an error while executing this user context menu command.`, flags: MessageFlags.Ephemeral });
+            await interaction.guild.channels.get(devChannel).send(`Error Report:\n\`\`\`${e}\`\`\``);
+        } else {
+            await interaction.reply({ content: `There was an error executing this user context menu command.`, flags: MessageFlags.Ephemeral });
+            await interaction.guild.channels.get(devChannel).send(`Error Report:\n\`\`\`${e}\`\`\``);
+        }
+    }
+})
 
 /***********************************
  *      UNHANDLED REJECTION
