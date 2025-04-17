@@ -67,9 +67,8 @@ for (const folder of commandFolders) {
 };
 
 /***********************************
- *      CONTEXT HANDLER
+ *      CONTEXTS HANDLER
  ***********************************/
-
 bot.contexts = new Collection();
 
 const contextsPath = path.join(__dirname, './bot/interactions/menus');
@@ -98,6 +97,13 @@ for (const folder of contextFolders) {
 bot.once(Events.ClientReady, readyBot => {
     console.info(`Ready and logged in as ${readyBot.user.tag}`);
 });
+
+/***********************************
+ *      CONSOLE HANDLERS
+ ***********************************/
+bot.on(Events.Debug, info => console.debug(info));
+bot.on(Events.Warn, info => console.warn(info));
+bot.on(Events.Error, error => console.error(error));
 
 /***********************************
  *      CHAT COMMAND EVENT
