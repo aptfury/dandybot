@@ -1,4 +1,4 @@
-const { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, UserContextMenuCommandInteraction, GuildMember } = require('discord.js');
+const { ActionRowBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } = require('discord.js');
 
 const quoteModal = new ModalBuilder()
     .setCustomId('addUserQuote')
@@ -12,7 +12,6 @@ const quoteContent = new TextInputBuilder()
 const actionRow = new ActionRowBuilder().addComponents(quoteContent);
 
 quoteModal.addComponents(actionRow);
-
 /**
  * 
  * @param {UserContextMenuCommandInteraction} interaction
