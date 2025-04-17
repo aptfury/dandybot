@@ -3,7 +3,6 @@
  ***********************************/
 require('dotenv').config();
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags } = require('discord.js');
-const { logger } = require('./configs/logger.js');
 const fs = require('node:fs');
 const path = require('node:path');
 
@@ -59,10 +58,10 @@ for (const folder of commandFolders) {
 
         if ('data' in command && 'execute' in command) {
             bot.commands.set(command.data.name, command);
-            logger.info(`${command.data.name} has been added.`);
+            console.info(`${command.data.name} has been added.`);
         }
         else {
-            logger.error(`The command at ${filePath} is missing the "data" and/or "execute" property. [APP.JS]`);
+            console.error(`The command at ${filePath} is missing the "data" and/or "execute" property. [APP.JS]`);
         }
     }
 };
@@ -76,7 +75,7 @@ bot.contexts = new Collection();
 const contextsPath = path.join(__dirname, './bot/interactions/menus');
 const contextFolders = fs.readdirSync(contextsPath);
 
-for (const folder of commandFolders) {
+for (const folder of contextFolders) {
     const contextPath = path.join(contextsPath, folder);
     const contextFiles = fs.readdirSync(contextPath).filter(file => file.endsWith('.js'));
 
@@ -97,7 +96,7 @@ for (const folder of commandFolders) {
  *      BOT READY EVENT
  ***********************************/
 bot.once(Events.ClientReady, readyBot => {
-    logger.info(`Ready and logged in as ${readyBot.user.tag}`);
+    console.info(`Ready and logged in as ${readyBot.user.tag}`);
 });
 
 /***********************************
@@ -109,7 +108,7 @@ bot.on(Events.InteractionCreate, async interaction => {
     const command = interaction.client.commands.get(interaction.commandName);
 
     if (!command) {
-        logger.error(`No command matching ${interaction.commandName} was found.`);
+        console.error(`No command matching ${interaction.commandName} was found.`);
         return;
     }
 
@@ -117,7 +116,7 @@ bot.on(Events.InteractionCreate, async interaction => {
         await command.execute(interaction);
     }
     catch (e) {
-        logger.error(e);
+        console.error(e);
 
         if (interaction.replied || interaction.deferred) {
             await interaction.followUp({ content: `There was an error whle executing this command!`, flags: MessageFlags.Ephemeral });
@@ -139,7 +138,7 @@ bot.on(Events.InteractionCreate, async interaction => {
 /***********************************
  *      UNHANDLED REJECTION
  ***********************************/
-process.on('unhandledRejection', error => logger.error('Unhandled promise Rejection:', error));
+process.on('unhandledRejection', error => console.error('Unhandled promise Rejection:', error));
 
 /***********************************
  *      BOT LOGIN
