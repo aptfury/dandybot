@@ -1,9 +1,8 @@
-require('dotenv').config({ path: '../src/configs/.env' });
+require('dotenv').config();
 const { EmbedBuilder, InteractionContextType, PermissionFlagsBits, SlashCommandBuilder, MessageFlags, ChatInputCommandInteraction } = require('discord.js');
-const logger = require('../../../../configs/logger');
 
-const quotesChannel = process.env.dandy_quotes_chan_id;
-const chan = process.env.dandy_bot_dev_chan_id;
+const quotesChannel = process.env.DANDY_QUOTES_CHAN_ID;
+const chan = process.env.DANDY_BOT_DEV_CHAN_ID;
 
 module.exports = {
     data: new SlashCommandBuilder()
