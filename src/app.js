@@ -1,11 +1,20 @@
+/***********************************
+ *      IMPORTS
+ ***********************************/
 require('dotenv').config();
 const { Client, Collection, Events, GatewayIntentBits, MessageFlags } = require('discord.js');
 const { logger } = require('./configs/logger.js');
 const fs = require('node:fs');
 const path = require('node:path');
 
+/***********************************
+ *      .ENV VARIABLES
+ ***********************************/
 const token = process.env.TOKEN;
 
+/***********************************
+ *      BOT CLIENT INIT
+ ***********************************/
 const bot = new Client({
     intents: [
         GatewayIntentBits.AutoModerationConfiguration,
@@ -32,7 +41,9 @@ const bot = new Client({
     ]
 });
 
-// bot command handler
+/***********************************
+ *      COMMAND HANDLER
+ ***********************************/
 bot.commands = new Collection();
 
 const commandsPath = path.join(__dirname, './bot/interactions/commands');
@@ -56,10 +67,22 @@ for (const folder of commandFolders) {
     }
 };
 
+/***********************************
+ *      CONTEXT HANDLER
+ ***********************************/
+
+
+
+/***********************************
+ *      BOT READY EVENT
+ ***********************************/
 bot.once(Events.ClientReady, readyBot => {
     logger.info(`Ready and logged in as ${readyBot.user.tag}`);
 });
 
+/***********************************
+ *      CHAT COMMAND EVENT
+ ***********************************/
 bot.on(Events.InteractionCreate, async interaction => {
     if (!interaction.isChatInputCommand()) return;
     
@@ -85,6 +108,20 @@ bot.on(Events.InteractionCreate, async interaction => {
     }
 });
 
+/***********************************
+ *      CONTEXT_MESSAGE EVENT
+ ***********************************/
+
+/***********************************
+ *      CONTEXT_USER EVENT
+ ***********************************/
+
+/***********************************
+ *      UNHANDLED REJECTION
+ ***********************************/
 process.on('unhandledRejection', error => logger.error('Unhandled promise Rejection:', error));
 
+/***********************************
+ *      BOT LOGIN
+ ***********************************/
 bot.login(token);
