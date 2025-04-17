@@ -41,6 +41,6 @@ module.exports = {
                 flags: MessageFlags.Ephemeral
             });
         })
-        .catch(e => console.log(e));
+        .catch(e => console.error(e));
     }
 }

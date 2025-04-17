@@ -2,7 +2,6 @@ require('dotenv').config();
 const { EmbedBuilder, InteractionContextType, PermissionFlagsBits, SlashCommandBuilder, MessageFlags, ChatInputCommandInteraction } = require('discord.js');
 
 const quotesChannel = process.env.DANDY_QUOTES_CHAN_ID;
-const chan = process.env.DANDY_BOT_DEV_CHAN_ID;
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -40,7 +39,7 @@ module.exports = {
             await channel.send({ embeds: [ quoteEmbed ] });
             await interaction.reply({ content: 'Successfully quoted!', flags: MessageFlags.Ephemeral });
         } catch (e) {
-            throw new Error(e);
+            console.error(e);
         }
     }
 }

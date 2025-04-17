@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 const Toons = require('../../../services/models/toons.js');
 const { createToon, createTwisted } = require('../../../services/character.js');
-const { logger } = require('../../../../configs/logger.js');
 const Twisteds = require('../../../models/twisteds.js');
 
 module.exports = {
@@ -30,10 +29,10 @@ module.exports = {
 
         await createTwisted(twisted)
         .then(res => response.twisted = res)
-        .catch(e => logger.error(e));
+        .catch(e => console.error(e));
         await createToon(toon)
         .then(res => response.toon = res)
-        .catch(e => logger.error(e));
+        .catch(e => console.error(e));
 
         await interaction.reply(`\`\`\`${response}\`\`\``);
     }

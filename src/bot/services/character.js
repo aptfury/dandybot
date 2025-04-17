@@ -1,12 +1,10 @@
 const { con } = require('./connection.js');
 const Toons = require('../models/toons.js');
 const Twisteds = require('../models/twisteds.js');
-const Stats = require('../models/stats.js');
 
 const db = con.db("dand_e");
 const toon = db.collection("toons");
 const twisted = db.collection("twisted");
-const statistics = db.collection("stats");
 
 // CREATE
 /**

@@ -5,7 +5,6 @@
 const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 const Twisteds = require('../../../services/models/twisteds.js');
 const { createTwisted } = require('../../../services/character.js');
-const { logger } = require('../../../../configs/logger.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -26,6 +25,6 @@ module.exports = {
 
         await createTwisted(twisted)
         .then(async response => await interaction.reply(response))
-        .catch(e => logger.error(e));
+        .catch(e => console.error(e));
     }
 }

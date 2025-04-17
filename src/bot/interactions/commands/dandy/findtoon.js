@@ -1,7 +1,6 @@
 const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 // const Toons = require('../../../services/models/toons.js');
 const { readToon } = require('../../../services/character.js');
-const { logger } = require('../../../../configs/logger.js');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -22,6 +21,6 @@ module.exports = {
 
         await readToon(toon)
         .then(async response => await interaction.reply(response))
-        .catch(e => logger.error(e));
+        .catch(e => console.error(e));
     }
 }
