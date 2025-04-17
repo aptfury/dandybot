@@ -71,7 +71,27 @@ for (const folder of commandFolders) {
  *      CONTEXT HANDLER
  ***********************************/
 
+bot.contexts = new Collection();
 
+const contextsPath = path.join(__dirname, './bot/interactions/menus');
+const contextFolders = fs.readdirSync(contextsPath);
+
+for (const folder of commandFolders) {
+    const contextPath = path.join(contextsPath, folder);
+    const contextFiles = fs.readdirSync(contextPath).filter(file => file.endsWith('.js'));
+
+    for (const file of contextFiles) {
+        const filePath = path.join(contextPath, file);
+        const context = require(filePath);
+
+        if ('data' in context && 'execute' in context) {
+            bot.contexts.set(context.data.name, context);
+            console.info(`${context.data.name} has been added.`);
+        } else {
+            console.warn(`The context menu at ${filePath} is missing a required "data" or "execute" property.`);
+        }
+    }
+}
 
 /***********************************
  *      BOT READY EVENT
