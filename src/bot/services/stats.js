@@ -12,7 +12,6 @@ const image = db.collection("images");
 const light = db.collection("light");
 const mastery = db.collection("masteries");
 const rank = db.collection("ranks");
-const ratevalue = db.collection("ratevalues");
 const requirement = db.collection("requirements");
 const research = db.collection("research");
 const skillcheck = db.collection("skillchecks");
@@ -318,117 +317,288 @@ async function createTrinkets(data) {
 
 /**
  * 
- * @param {Abilities} data
+ * @param {Object} data
  * @returns
  */
+async function readAbilities(data) {
+    try {
+        const doc = await ability.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Attention} data
+ * @param {Object} data
  * @returns
  */
+async function readAttention(data) {
+    try {
+        const doc = await attention.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Debuffs} data
+ * @param {Object} data
  * @returns
  */
+async function readDebuffs(data) {
+    try {
+        const doc = await debuff.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Detection} data
+ * @param {Object} data
  * @returns
  */
+async function readDetection(data) {
+    try {
+        const doc = await detection.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Extraction} data
+ * @param {Object} data
  * @returns
  */
+async function readExtraction(data) {
+    try {
+        const doc = await extraction.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Health} data
+ * @param {Object} data
  * @returns
  */
+async function readHealth(data) {
+    try {
+        const doc = await health.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Images} data
+ * @param {Object} data
  * @returns
  */
+async function readImages(data) {
+    try {
+        const doc = await image.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Light} data
+ * @param {Object} data
  * @returns
  */
+async function readLight(data) {
+    try {
+        const doc = await light.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Mastery} data
+ * @param {Object} data
  * @returns
  */
+async function readMastery(data) {
+    try {
+        const doc = await mastery.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Rank} data
+ * @param {Object} data
  * @returns
  */
+async function readRank(data) {
+    try {
+        const doc = await rank.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Requirements} data
+ * @param {Object} data
  * @returns
  */
+async function readRequirements(data) {
+    try {
+        const doc = await requirement.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Research} data
+ * @param {Object} data
  * @returns
  */
+async function readResearch(data) {
+    try {
+        const doc = await research.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Skillchecks} data
+ * @param {Object} data
  * @returns
  */
+async function readSkillchecks(data) {
+    try {
+        const doc = await skillcheck.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Speed} data
+ * @param {Object} data
  * @returns
  */
+async function readSpeed(data) {
+    try {
+        const doc = await speed.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Stamina} data
+ * @param {Object} data
  * @returns
  */
+async function readStamina(data) {
+    try {
+        const doc = await stamina.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Stats} data
+ * @param {Object} data
  * @returns
  */
+async function readStats(data) {
+    try {
+        const doc = await stat.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Stealth} data
+ * @param {Object} data
  * @returns
  */
+async function readStealth(data) {
+    try {
+        const doc = await stealth.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Strategies} data
+ * @param {Object} data
  * @returns
  */
+async function readStrategies(data) {
+    try {
+        const doc = await strategy.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Trinkets} data
+ * @param {Object} data
  * @returns
  */
+async function readTrinkets(data) {
+    try {
+        const doc = await trinket.findOne(data);
+        return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /*******************************
  *      UPDATE
@@ -436,117 +606,326 @@ async function createTrinkets(data) {
 
 /**
  * 
- * @param {Abilities} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateAbilities(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await ability.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Attention} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateAttention(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await attention.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Debuffs} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateDebuffs(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await debuff.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Detection} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateDetection(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await detection.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Extraction} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateExtraction(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await extraction.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Health} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateHealth(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await health.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Images} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateImages(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await image.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Light} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateLight(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await light.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Mastery} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateMastery(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await mastery.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Rank} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateRank(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await rank.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Requirements} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateRequirements(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await requirement.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Research} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateResearch(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await research.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Skillchecks} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateSkillchecks(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await skillcheck.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Speed} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateSpeed(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await speed.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Stamina} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateStamina(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await stamina.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Stats} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateStats(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await stat.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Stealth} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateStealth(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await stealth.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Strategies} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateStrategies(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await strategy.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /**
  * 
- * @param {Trinkets} data
+ * @param {Object} filter
+ * @param {Object} update
  * @returns
  */
+async function updateTrinkets(filter, update) {
+    try {
+        // { $set: { ..keys: ...values } } will need to be in the command.
+        await trinket.updateOne(filter, update);
+        return true;
+    }
+    catch (e) {
+        return e;
+    }
+}
 
 /*******************************
  *      DELETE
@@ -554,114 +933,287 @@ async function createTrinkets(data) {
 
 /**
  * 
- * @param {Abilities} data
+ * @param {Object} data
  * @returns
  */
+async function deleteAbilities(data) {
+    try {
+        await ability.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Attention} data
  * @returns
  */
+async function deleteAttention(data) {
+    try {
+        await attention.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Debuffs} data
  * @returns
  */
+async function deleteDebuffs(data) {
+    try {
+        await debuff.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Detection} data
  * @returns
  */
+async function deleteDetection(data) {
+    try {
+        await detection.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Extraction} data
  * @returns
  */
+async function deleteExtraction(data) {
+    try {
+        await extraction.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Health} data
  * @returns
  */
+async function deleteHealth(data) {
+    try {
+        await health.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Images} data
  * @returns
  */
+async function deleteImages(data) {
+    try {
+        await image.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Light} data
  * @returns
  */
+async function deleteLight(data) {
+    try {
+        await light.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Mastery} data
  * @returns
  */
+async function deleteMastery(data) {
+    try {
+        await mastery.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Rank} data
  * @returns
  */
+async function deleteRank(data) {
+    try {
+        await rank.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Requirements} data
  * @returns
  */
+async function deleteRequirements(data) {
+    try {
+        await requirement.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Research} data
  * @returns
  */
+async function deleteResearch(data) {
+    try {
+        await research.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Skillchecks} data
  * @returns
  */
+async function deleteSkillchecks(data) {
+    try {
+        await skillcheck.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Speed} data
  * @returns
  */
+async function deleteSpeed(data) {
+    try {
+        await speed.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Stamina} data
  * @returns
  */
+async function deleteStamina(data) {
+    try {
+        await stamina.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Stats} data
  * @returns
  */
+async function deleteStats(data) {
+    try {
+        await stat.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Stealth} data
  * @returns
  */
+async function deleteStealth(data) {
+    try {
+        await stealth.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Strategies} data
  * @returns
  */
+async function deleteStrategies(data) {
+    try {
+        await strategy.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
 
 /**
  * 
  * @param {Trinkets} data
  * @returns
  */
+async function deleteTrinkets(data) {
+    try {
+        await trinket.deleteOne(data);
+        return true;
+    }
+    catch(e) {
+        return e;
+    }
+}
+
+module.exports = { createAbilities, createAttention, createDebuffs, createDetection, createExtraction, createHealth, createImages, createLight, createMastery, createRank, createRequirements, createResearch, createSkillchecks, createSpeed, createStamina, createStats, createStealth, createStrategies, createTrinkets, readAbilities, readAttention, readDebuffs, readDetection, readExtraction, readHealth, readImages, readLight, readMastery, readRank, readRequirements, readResearch, readSkillchecks, readSpeed, readStamina, readStats, readStealth, readStrategies, readTrinkets, updateAbilities, updateAttention, updateDebuffs, updateDetection, updateExtraction, updateHealth, updateImages, updateLight, updateMastery, updateRank, updateRequirements, updateResearch, updateSkillchecks, updateSpeed, updateStamina, updateStats, updateStealth, updateStrategies, updateTrinkets, deleteAbilities, deleteAttention, deleteDebuffs, deleteDetection, deleteExtraction, deleteHealth, deleteImages, deleteLight, deleteMastery, deleteRank, deleteRequirements, deleteResearch, deleteSkillchecks, deleteSpeed, deleteStamina, deleteStats, deleteStealth, deleteStrategies, deleteTrinkets }
