@@ -941,14 +941,14 @@ async function deleteAbilities(data) {
         await ability.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Attention} data
+ * @param {Object} data
  * @returns
  */
 async function deleteAttention(data) {
@@ -956,14 +956,14 @@ async function deleteAttention(data) {
         await attention.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Debuffs} data
+ * @param {Object} data
  * @returns
  */
 async function deleteDebuffs(data) {
@@ -971,14 +971,14 @@ async function deleteDebuffs(data) {
         await debuff.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Detection} data
+ * @param {Object} data
  * @returns
  */
 async function deleteDetection(data) {
@@ -986,14 +986,14 @@ async function deleteDetection(data) {
         await detection.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Extraction} data
+ * @param {Object} data
  * @returns
  */
 async function deleteExtraction(data) {
@@ -1001,14 +1001,14 @@ async function deleteExtraction(data) {
         await extraction.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Health} data
+ * @param {Object} data
  * @returns
  */
 async function deleteHealth(data) {
@@ -1016,14 +1016,14 @@ async function deleteHealth(data) {
         await health.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Images} data
+ * @param {Object} data
  * @returns
  */
 async function deleteImages(data) {
@@ -1031,14 +1031,14 @@ async function deleteImages(data) {
         await image.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Light} data
+ * @param {Object} data
  * @returns
  */
 async function deleteLight(data) {
@@ -1046,14 +1046,14 @@ async function deleteLight(data) {
         await light.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Mastery} data
+ * @param {Object} data
  * @returns
  */
 async function deleteMastery(data) {
@@ -1061,14 +1061,14 @@ async function deleteMastery(data) {
         await mastery.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Rank} data
+ * @param {Object} data
  * @returns
  */
 async function deleteRank(data) {
@@ -1076,14 +1076,14 @@ async function deleteRank(data) {
         await rank.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Requirements} data
+ * @param {Object} data
  * @returns
  */
 async function deleteRequirements(data) {
@@ -1091,14 +1091,14 @@ async function deleteRequirements(data) {
         await requirement.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Research} data
+ * @param {Object} data
  * @returns
  */
 async function deleteResearch(data) {
@@ -1106,14 +1106,14 @@ async function deleteResearch(data) {
         await research.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Skillchecks} data
+ * @param {Object} data
  * @returns
  */
 async function deleteSkillchecks(data) {
@@ -1121,14 +1121,14 @@ async function deleteSkillchecks(data) {
         await skillcheck.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Speed} data
+ * @param {Object} data
  * @returns
  */
 async function deleteSpeed(data) {
@@ -1136,14 +1136,14 @@ async function deleteSpeed(data) {
         await speed.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Stamina} data
+ * @param {Object} data
  * @returns
  */
 async function deleteStamina(data) {
@@ -1151,14 +1151,14 @@ async function deleteStamina(data) {
         await stamina.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Stats} data
+ * @param {Object} data
  * @returns
  */
 async function deleteStats(data) {
@@ -1166,14 +1166,14 @@ async function deleteStats(data) {
         await stat.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Stealth} data
+ * @param {Object} data
  * @returns
  */
 async function deleteStealth(data) {
@@ -1181,14 +1181,14 @@ async function deleteStealth(data) {
         await stealth.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Strategies} data
+ * @param {Object} data
  * @returns
  */
 async function deleteStrategies(data) {
@@ -1196,14 +1196,14 @@ async function deleteStrategies(data) {
         await strategy.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
 
 /**
  * 
- * @param {Trinkets} data
+ * @param {Object} data
  * @returns
  */
 async function deleteTrinkets(data) {
@@ -1211,7 +1211,7 @@ async function deleteTrinkets(data) {
         await trinket.deleteOne(data);
         return true;
     }
-    catch(e) {
+    catch (e) {
         return e;
     }
 }
