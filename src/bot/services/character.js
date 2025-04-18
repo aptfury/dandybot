@@ -6,7 +6,10 @@ const db = con.db("dand_e");
 const toon = db.collection("toons");
 const twisted = db.collection("twisted");
 
-// CREATE
+/*******************************
+ *      CREATE
+ ******************************/
+
 /**
  * 
  * @param {Toons} data 
@@ -37,7 +40,10 @@ async function createTwisted(data) {
     }
 }
 
-// READ
+/*******************************
+ *      READ
+ ******************************/
+
 /**
  * 
  * @param {Object} data 
@@ -102,7 +108,10 @@ async function getTwistedId(data) {
     }
 }
 
-// UPDATE
+/*******************************
+ *      UPDATE
+ ******************************/
+
 /**
  * 
  * @param {Object} filter
@@ -137,7 +146,10 @@ async function updateTwisted(filter, update) {
     }
 }
 
-// DELETE
+/*******************************
+ *      DELETE
+ ******************************/
+
 /**
  * 
  * @param {Object} data
