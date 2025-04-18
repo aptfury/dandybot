@@ -65,6 +65,7 @@ async function createAttention(data) {
 async function createDebuffs(data) {
     try {
         await debuff.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -79,6 +80,7 @@ async function createDebuffs(data) {
 async function createDetection(data) {
     try {
         await detection.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -93,6 +95,7 @@ async function createDetection(data) {
 async function createExtraction(data) {
     try {
         await extraction.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -107,6 +110,7 @@ async function createExtraction(data) {
 async function createHealth(data) {
     try {
         await health.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -121,6 +125,7 @@ async function createHealth(data) {
 async function createImages(data) {
     try {
         await image.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -135,6 +140,7 @@ async function createImages(data) {
 async function createLight(data) {
     try {
         await light.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -149,6 +155,7 @@ async function createLight(data) {
 async function createMastery(data) {
     try {
         await mastery.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -163,6 +170,7 @@ async function createMastery(data) {
 async function createRank(data) {
     try {
         await rank.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -177,6 +185,7 @@ async function createRank(data) {
 async function createRequirements(data) {
     try {
         await requirement.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -191,6 +200,7 @@ async function createRequirements(data) {
 async function createResearch(data) {
     try {
         await research.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -205,6 +215,7 @@ async function createResearch(data) {
 async function createSkillchecks(data) {
     try {
         await skillcheck.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -219,6 +230,7 @@ async function createSkillchecks(data) {
 async function createSpeed(data) {
     try {
         await speed.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -233,6 +245,7 @@ async function createSpeed(data) {
 async function createStamina(data) {
     try {
         await stamina.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -245,17 +258,12 @@ async function createStamina(data) {
  * @returns
  */
 async function createStats(data) {
-    if (!data._id) return "You must include a character ID in order to add stats for a character."
-
     try {
         await stat.insertOne(data);
-        return "Stats have been created.";
+        return true;
     }
     catch (e) {
-        return {
-            message: 'An error occurred when trying to add stats.',
-            error: e
-        }
+        return e;
     }
 }
 
@@ -267,6 +275,7 @@ async function createStats(data) {
 async function createStealth(data) {
     try {
         await stealth.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -281,6 +290,7 @@ async function createStealth(data) {
 async function createStrategies(data) {
     try {
         await strategy.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
@@ -295,6 +305,7 @@ async function createStrategies(data) {
 async function createTrinkets(data) {
     try {
         await trinket.insertOne(data);
+        return true;
     }
     catch (e) {
         return e;
