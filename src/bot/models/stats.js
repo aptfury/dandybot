@@ -1,6 +1,6 @@
 const { getToonId, getTwistedId } = require('../services/character.js');
 
-module.exports = class Abilities {
+class Abilities {
     constructor(data) {
         this._id = data._id,
         this._toonId = data._toonId,
@@ -10,7 +10,7 @@ module.exports = class Abilities {
     }
 }
 
-module.exports = class Attention {
+class Attention {
     constructor(data) {
         this._id = data._id,
         this.rating = data.rating,
@@ -18,7 +18,7 @@ module.exports = class Attention {
     }
 }
 
-module.exports = class Debuffs {
+class Debuffs {
     constructor(data) {
         this._id = data._id,
         this._twistedId = data._twistedId,
@@ -28,8 +28,7 @@ module.exports = class Debuffs {
         this.info = data.info
     }
 }
-
-module.exports = class Detection {
+class Detection {
     constructor(data) {
         this._id = data._id,
         this.rating = data.rating,
@@ -38,7 +37,7 @@ module.exports = class Detection {
     }
 }
 
-module.exports = class Extraction {
+class Extraction {
     constructor(data) {
         this._id = data._id,
         this.rating = data.rating,
@@ -48,7 +47,7 @@ module.exports = class Extraction {
     }
 }
 
-module.exports = class Health {
+class Health {
     constructor(data) {
         this._id = data._id,
         this.rating = data.rating,
@@ -56,7 +55,7 @@ module.exports = class Health {
     }
 }
 
-module.exports = class Images {
+class Images {
     constructor(data) {
         this._id = data._id,
         this._itemId = data._itemId,
@@ -66,7 +65,7 @@ module.exports = class Images {
     }
 }
 
-module.exports = class Light {
+class Light {
     constructor(data) {
         this._id = data._id,
         this.rating = data.rating,
@@ -74,7 +73,7 @@ module.exports = class Light {
     }
 }
 
-module.exports = class Mastery {
+class Mastery {
     constructor(data) {
         this._id = data._id,
         this._toonId = data._toonId,
@@ -84,14 +83,14 @@ module.exports = class Mastery {
     }
 }
 
-module.exports = class Rank {
+class Rank {
     constructor(data) {
         this._id = data._id,
         this.type = data.type
     }
 }
 
-module.exports = class Requirements {
+class Requirements {
     constructor(data) {
         this._id = data._id,
         this._itemId = data._itemId,
@@ -99,7 +98,7 @@ module.exports = class Requirements {
     }
 }
 
-module.exports = class Research {
+class Research {
     constructor(data) {
         this._id = data._id,
         this._twistedId = data._twistedId,
@@ -109,7 +108,7 @@ module.exports = class Research {
     }
 }
 
-module.exports = class Skillchecks {
+class Skillchecks {
     constructor(data) {
         this._id = data._id,
         this.rating = data.rating,
@@ -121,7 +120,7 @@ module.exports = class Skillchecks {
     }
 }
 
-module.exports = class Speed {
+class Speed {
     constructor(data) {
         this._id = data._id,
         this.rating = data.rating,
@@ -138,7 +137,7 @@ module.exports = class Speed {
     }
 }
 
-module.exports = class Stamina {
+class Stamina {
     constructor(data) {
         this._id = data._id,
         this.rating = data.rating,
@@ -146,7 +145,7 @@ module.exports = class Stamina {
     }
 }
 
-module.exports = class Stats {
+class Stats {
     constructor(data) {
         this._id = _id || null;
         this.rank = data.rank || null;
@@ -162,7 +161,7 @@ module.exports = class Stats {
     };
 }
 
-module.exports = class Stealth {
+class Stealth {
     constructor(data) {
         this._id = data._id,
         this.rating = data.rating,
@@ -170,7 +169,7 @@ module.exports = class Stealth {
     }
 }
 
-module.exports = class Strategies {
+class Strategies {
     constructor(data) {
         this._id = data._id,
         this._topicId = data._topicId,
@@ -179,7 +178,7 @@ module.exports = class Strategies {
     }
 }
 
-module.exports = class Trinkets {
+class Trinkets {
     constructor(data) {
         this._id = data._id,
         this.name = data.name,
@@ -190,3 +189,5 @@ module.exports = class Trinkets {
         this.other = data.other
     }
 }
+
+module.exports = { Abilities, Attention, Debuffs, Detection, Extraction, Health, Images, Light, Mastery, Rank, Requirements, Research, Skillchecks, Speed, Stamina, Stats, Stealth, Strategies, Trinkets };
