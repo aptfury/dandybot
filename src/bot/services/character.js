@@ -10,6 +10,7 @@ const twisted = db.collection("twisted");
 /**
  * 
  * @param {Toons} info 
+ * @returns 
  */
 async function createToon(info) {
     const doc = info;
@@ -17,7 +18,7 @@ async function createToon(info) {
     if (!doc.name) return "You must include a name in order to add a Toon to the database.";
 
     try {
-        const result = await toon.insertOne(doc);
+        await toon.insertOne(doc);
         return `${doc.name} has been added to the database.`
     }
     catch (e) {
@@ -29,7 +30,9 @@ async function createToon(info) {
 }
 
 /**
+ * 
  * @param {Twisteds} info 
+ * @returns 
  */
 async function createTwisted(info) {
     const doc = info;
@@ -52,15 +55,13 @@ async function createTwisted(info) {
 /**
  * 
  * @param {Object} info 
+ * @param {Toons} doc
+ * @returns 
  */
 async function readToon(info) {
     const filter = info;
 
     try {
-        /**
-         * TODO:
-         *      (1) Have this return the class instead of the document?
-         */
         const doc = await toon.findOne(filter);
         return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
     }
@@ -75,15 +76,13 @@ async function readToon(info) {
 /**
  * 
  * @param {Object} info
+ * @param {Twisteds} doc
+ * @returns 
  */
 async function readTwisted(info) {
     const filter = info;
 
     try {
-        /**
-         * TODO:
-         *      (1) Have this return the class instead of the document?
-         */
         const doc = await twisted.findOne(filter);
         return `\`\`\`${JSON.stringify(doc, null, 4)}\`\`\``;
     }
@@ -140,8 +139,71 @@ async function getTwistedId(info) {
 }
 
 // UPDATE
+/**
+ * 
+ * @param {String} name
+ * @param {Object} update
+ * @returns
+ */
+async function updateToon(name, update) {
+    const filter = { name: name };
+    const changes = { $set: update };
+
+    try {
+        await toon.updateOne(filter, changes);
+        return 'Update complete. Please use the find command to view the toon and ensure the edits were successful.';
+    }
+    catch (e) {
+        return {
+            message: `There was an error editing that toon.`,
+            error: e
+        }
+    }
+}
+
+/**
+ * 
+ * @param {String} name
+ * @param {Object} update
+ * @returns 
+ */
+async function updateTwisted(name, update) {
+    const filter = { name: name };
+    const changes = { $set: update };
+
+    try {
+        await twisted.updateOne(filter, changes);
+        return 'Update complete. Please use the find command to view the twisted and ensure the edits were successful.';
+    }
+    catch (e) {
+        return {
+            message: `There was an error editing that twisted.`,
+            error: e
+        }
+    }
+}
 
 // DELETE
+/**
+ * 
+ * @param {String} name
+ * @returns 
+ */
+async function deleteToon(name) {
+    const filter = { name: name };
+
+    try {
+        await toon.deleteOne(filter);
+        await twisted.deleteOne(filter);
+        return 'Deleted. Please use the find command to ensure the toon no longer exists.';
+    }
+    catch (e) {
+        return {
+            message: 'There was an error deleting that toon.',
+            error: e
+        }
+    }
+}
 
 // EXPORTS
-module.exports = { createToon, readToon, getToonId, createTwisted, getTwistedId, readTwisted };
+module.exports = { createToon, readToon, getToonId, createTwisted, getTwistedId, readTwisted, updateToon, updateTwisted, deleteToon };

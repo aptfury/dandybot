@@ -67,10 +67,10 @@ module.exports = {
             .catch(e => console.error(e));
         }
         else if (subcom === 'edit') {
-
+            const name = interaction.options.getString('toon');
         }
         else if (subcom === 'delete') {
-
+            const name = interaction.options.getString('removing');
         }
         else {
             await interaction.reply({ content: 'You can either add, find, edit, or delete a toon using this command. The delete feature can only be used by staff. Please reach out to a staff member if you need them to remove a toon.', flags: MessageFlags.Ephemeral });
