@@ -45,6 +45,21 @@ async function createTwisted(data) {
  ******************************/
 
 /**
+ * @param {Object} data
+ * @returns
+ */
+async function exists(data) {
+    try {
+        if (await toon.findOne(data)) return true;
+
+        return false;
+    }
+    catch (e) {
+        return e;
+    }
+}
+
+/**
  * 
  * @param {Object} data 
  * @returns 
@@ -167,4 +182,4 @@ async function deleteToon(data) {
 }
 
 // EXPORTS
-module.exports = { createToon, readToon, getToonId, createTwisted, getTwistedId, readTwisted, updateToon, updateTwisted, deleteToon };
+module.exports = { createToon, readToon, getToonId, createTwisted, getTwistedId, readTwisted, updateToon, updateTwisted, deleteToon, exists };

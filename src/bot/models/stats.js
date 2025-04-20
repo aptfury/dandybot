@@ -28,6 +28,7 @@ class Debuffs {
         this.info = data.info
     }
 }
+
 class Detection {
     constructor(data) {
         this._id = data._id,
