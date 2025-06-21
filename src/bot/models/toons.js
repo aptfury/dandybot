@@ -1,5 +1,4 @@
 const { UUID } = require('bson');
-const Stats = require('./stats.js');
 
 module.exports = class Toons {
     constructor(data) {
@@ -7,6 +6,10 @@ module.exports = class Toons {
         this.name = data.name || null;
         this.gender = data.gender || null;
         this.pronouns = data.pronouns || null;
-        this.stats = Stats;
+        this.stats = data.stats || null;
+        this.abilities = data.abilities || null;
+        this.mastery = data.mastery || null;
+        this.requirements = data.requirements || null;
+        this.roles = data.roles || "No notes available"; // which general roles this toon can fill (i.e. kite, support, healer, extractor)
     };
 }
