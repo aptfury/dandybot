@@ -22,7 +22,7 @@
   "dependencies": {
     "@napi-rs/canvas": "^0.1.68",
     "dayjs": "^1.11.13",
-    "discord.js": "^14.18.0",
+    "discord.js": "^14.21.0",
     "dotenv": "^16.4.7",
     "file-type": "^20.4.1",
     "mongodb": "6.15",
