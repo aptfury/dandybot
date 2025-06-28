@@ -1,5 +1,5 @@
 FROM node:latest
-ENV APP_HOME /src
+ENV APP_HOME .
 RUN mkdir -pv $APP_HOME
 WORKDIR $APP_HOME
 ADD . $APP_HOME
