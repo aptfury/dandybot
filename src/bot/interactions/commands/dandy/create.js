@@ -37,83 +37,104 @@ module.exports = {
                     { name: 'Lethal', value: 'Lethal' }
                 )
         )
+        /**
+         * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
+         */
         .addStringOption(option =>
             option
                 .setName('health')
                 .setDescription(`Number of hearts they have`)
                 .addChoices(
-                    { name: '1 Heart', value: 1 },
-                    { name: '2 Hearts', value: 2 },
-                    { name: '3 Hearts', value: 3 }
+                    { name: '1 Heart', value: '1' },
+                    { name: '2 Hearts', value: '2' },
+                    { name: '3 Hearts', value: '3' }
                 )
         )
+        /**
+         * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
+         */
         .addStringOption(option =>
             option
                 .setName('skillcheck')
                 .setDescription(`Skillcheck rating`)
                 .addChoices(
-                    { name: '1 Stars', value: 1 },
-                    { name: '2 Stars', value: 2 },
-                    { name: '3 Stars', value: 3 },
-                    { name: '4 Stars', value: 4 },
-                    { name: '5 Stars', value: 5 },
+                    { name: '1 Stars', value: '1' },
+                    { name: '2 Stars', value: '2' },
+                    { name: '3 Stars', value: '3' },
+                    { name: '4 Stars', value: '4' },
+                    { name: '5 Stars', value: '5' },
                 )
         )
+        /**
+         * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
+         */
         .addStringOption(option =>
             option
                 .setName('speed')
                 .setDescription(`Speed rating`)
                 .addChoices(
-                    { name: '1 Stars', value: 1 },
-                    { name: '2 Stars', value: 2 },
-                    { name: '3 Stars', value: 3 },
-                    { name: '4 Stars', value: 4 },
-                    { name: '5 Stars', value: 5 },
+                    { name: '1 Stars', value: '1' },
+                    { name: '2 Stars', value: '2' },
+                    { name: '3 Stars', value: '3' },
+                    { name: '4 Stars', value: '4' },
+                    { name: '5 Stars', value: '5' },
                 )
         )
+        /**
+         * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
+         */
         .addStringOption(option =>
             option
                 .setName('stamina')
                 .setDescription(`Stamina rating`)
                 .addChoices(
-                    { name: '1 Stars', value: 1 },
-                    { name: '2 Stars', value: 2 },
-                    { name: '3 Stars', value: 3 },
-                    { name: '4 Stars', value: 4 },
-                    { name: '5 Stars', value: 5 },
+                    { name: '1 Stars', value: '1' },
+                    { name: '2 Stars', value: '2' },
+                    { name: '3 Stars', value: '3' },
+                    { name: '4 Stars', value: '4' },
+                    { name: '5 Stars', value: '5' },
                 )
         )
+        /**
+         * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
+         */
         .addStringOption(option =>
             option
                 .setName('stealth')
                 .setDescription(`Stealth rating`)
                 .addChoices(
-                    { name: '1 Stars', value: 1 },
-                    { name: '2 Stars', value: 2 },
-                    { name: '3 Stars', value: 3 },
-                    { name: '4 Stars', value: 4 },
-                    { name: '5 Stars', value: 5 },
+                    { name: '1 Stars', value: '1' },
+                    { name: '2 Stars', value: '2' },
+                    { name: '3 Stars', value: '3' },
+                    { name: '4 Stars', value: '4' },
+                    { name: '5 Stars', value: '5' },
                 )
         )
+        /**
+         * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
+         */
         .addStringOption(option =>
             option
                 .setName('extraction')
                 .setDescription(`Extraction rating`)
                 .addChoices(
-                    { name: '1 Stars', value: 1 },
-                    { name: '2 Stars', value: 2 },
-                    { name: '3 Stars', value: 3 },
-                    { name: '4 Stars', value: 4 },
-                    { name: '5 Stars', value: 5 },
+                    { name: '1 Stars', value: '1' },
+                    { name: '2 Stars', value: '2' },
+                    { name: '3 Stars', value: '3' },
+                    { name: '4 Stars', value: '4' },
+                    { name: '5 Stars', value: '5' },
                 )
         )
+        /**
+         * FIXME: Changed boolean to string, check effected code to ensure proper datatype is processed.
+         */
         .addStringOption(option =>
             option
                 .setName('light')
                 .setDescription(`Can they produce their own source of light?`)
                 .addChoices(
-                    { name: 'Yes', value: true },
-                    { name: 'No', value: false }
+                    { name: 'Yes', value: 'true' },
+                    { name: 'No', value: 'false' }
                 )
         )
         .addIntegerOption(option =>
