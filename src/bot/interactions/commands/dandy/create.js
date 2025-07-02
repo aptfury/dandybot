@@ -6,7 +6,7 @@ const { createToon, createTwisted, exists, getToonId } = require('../../../servi
 const { createStats } = require('../../../services/stats.js');
 
 module.exports = {
-    data: new SlashCommandBuilder()
+    /* data: new SlashCommandBuilder()
         .setName('newtoon')
         .setDescription('Adds a new toon to the database.')
         .addStringOption(option => 
@@ -37,9 +37,7 @@ module.exports = {
                     { name: 'Lethal', value: 'Lethal' }
                 )
         )
-        /**
          * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
-         */
         .addStringOption(option =>
             option
                 .setName('health')
@@ -50,9 +48,7 @@ module.exports = {
                     { name: '3 Hearts', value: '3' }
                 )
         )
-        /**
          * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
-         */
         .addStringOption(option =>
             option
                 .setName('skillcheck')
@@ -65,9 +61,7 @@ module.exports = {
                     { name: '5 Stars', value: '5' },
                 )
         )
-        /**
          * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
-         */
         .addStringOption(option =>
             option
                 .setName('speed')
@@ -80,9 +74,7 @@ module.exports = {
                     { name: '5 Stars', value: '5' },
                 )
         )
-        /**
          * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
-         */
         .addStringOption(option =>
             option
                 .setName('stamina')
@@ -95,9 +87,7 @@ module.exports = {
                     { name: '5 Stars', value: '5' },
                 )
         )
-        /**
          * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
-         */
         .addStringOption(option =>
             option
                 .setName('stealth')
@@ -110,9 +100,7 @@ module.exports = {
                     { name: '5 Stars', value: '5' },
                 )
         )
-        /**
          * FIXME: Changed int to string, check effected code to ensure proper datatype is processed.
-         */
         .addStringOption(option =>
             option
                 .setName('extraction')
@@ -125,9 +113,7 @@ module.exports = {
                     { name: '5 Stars', value: '5' },
                 )
         )
-        /**
          * FIXME: Changed boolean to string, check effected code to ensure proper datatype is processed.
-         */
         .addStringOption(option =>
             option
                 .setName('light')
@@ -271,7 +257,7 @@ module.exports = {
             option
                 .setName('twistedimage')
                 .setDescription(`URL to the wiki's image of the twisted`)
-        ),
+        ), */
     /**
      * 
      * @param {ChatInputCommandInteraction} interaction 

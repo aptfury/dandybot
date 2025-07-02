@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
+/* const { SlashCommandBuilder, ChatInputCommandInteraction } = require('discord.js');
 const { readTwisted } = require('../../../services/character.js');
 
 module.exports = {
@@ -9,12 +9,12 @@ module.exports = {
             option.setName('name')
                 .setDescription('Name of the toon.')
                 .setRequired(true)
-        ),
+        ), */
     /**
      * 
      * @param {ChatInputCommandInteraction} interaction 
      */
-    async execute(interaction) {
+/*     async execute(interaction) {
         const name = interaction.options.getString('name');
         const twisted = { name: name };
 
@@ -22,4 +22,4 @@ module.exports = {
         .then(async response => await interaction.reply(response))
         .catch(e => console.error(e));
     }
-}
+} */
