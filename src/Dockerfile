@@ -1,8 +1,4 @@
 FROM node:latest
-EXPOSE 443/tcp
-EXPOSE 443/udp
-EXPOSE 8080/tcp
-EXPOSE 8080/udp
 ENV APP_HOME .
 RUN mkdir -pv $APP_HOME
 WORKDIR $APP_HOME
