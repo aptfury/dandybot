@@ -1,3 +1,8 @@
+/**
+ * FIXME: make sure in-memory is a garbage disposal and does not take up much space
+ *        be sure to purge memory after each use
+ */
+
 /***********************************
  *      IMPORTS
  ***********************************/
